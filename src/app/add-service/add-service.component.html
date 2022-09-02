@@ -1,0 +1,43 @@
+<nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link" [routerLink]="['/add-product']">Add Product</a>
+    <a class="nav-item nav-link active" [routerLink]="['/add-supplier']">Add Supplier</a>
+    <a class="nav-item nav-link" [routerLink]="['/update-product']">Update Product</a>
+    <a class="nav-item nav-link" [routerLink]="['/admin-view']">View Products</a>
+    <a class="nav-item nav-link" [routerLink]="['/supplier-details']">View Suppliers</a>
+  </nav>
+<h2>Add Supplier</h2>
+
+<div id="AddFormSupplier">
+    <form 
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit(myForm.value)"
+         class="ui form">
+
+        <div class="mb-3 field">
+            <label for="name" class="form-label ">Supplier Name</label>
+            <input type="text" id="suppName" class="form-control" 
+            name="suppName" 
+            formControlName="suppName">
+            <div *ngIf="submitted && f['suppName'].errors" class="text-danger">
+                <div *ngIf="f['suppName'].errors['required']">Supplier Name is required</div>
+            </div>
+        </div>
+
+        <div class="mb-3 field">
+            <label for="id" class="form-label ">Supplier Id</label>
+            <input type="value" id="suppId" class="form-control" 
+            name="suppId" 
+            formControlName="suppId">
+        </div>
+
+        <div class="mb-3 field">
+            <label class="form-label ">Supplier Phone Number</label>
+            <input type="value" id="suppPhone" class="form-control" 
+            name="suppPhone" 
+            formControlName="suppPhone">
+        </div>
+
+
+        <button type="submit" class="ui button">Submit</button>
+    </form>
+</div>

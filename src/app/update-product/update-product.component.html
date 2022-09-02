@@ -1,0 +1,48 @@
+<nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link" [routerLink]="['/add-product']">Add Product</a>
+    <a class="nav-item nav-link" [routerLink]="['/add-supplier']">Add Supplier</a>
+    <a class="nav-item nav-link active" [routerLink]="['/update-product']">Update Product</a>
+    <a class="nav-item nav-link" [routerLink]="['/admin-view']">View Products</a>
+    <a class="nav-item nav-link" [routerLink]="['/supplier-details']">View Suppliers</a>
+  </nav>
+<h2>Update Product</h2>
+<div id="UpdateForm">
+    <form 
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit(myForm.value)"
+         class="ui form">
+
+         <label class="form-label" for="id"> Select a product for Update:</label>
+            <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event,$event.target)">
+                <option selected>Select a value</option>
+                <option *ngFor="let p of arrProducts" [ngValue]="p.id">{{p.pName}}</option>
+            </select>
+
+        <div class="mb-3 field">
+            <label for="name" class="form-label ">Product Name</label>
+            <input type="text" id="prodName" class="form-control" 
+            name="prodName" 
+            formControlName="prodName">
+            <!-- <div *ngIf="submitted && f['prodName'].errors" class="text-danger">
+                <div *ngIf="f['prodName'].errors['required']">Product Name is required</div>
+            </div> -->
+        </div>
+
+        <div class="mb-3 field">
+            <label for="id" class="form-label ">Product Id</label>
+            <input type="value" id="prodId" class="form-control" 
+            name="prodId" 
+            formControlName="prodId">
+        </div>
+
+        <div class="mb-3 field">
+            <label class="form-label ">Product Price</label>
+            <input type="value" id="prodPrice" class="form-control" 
+            name="prodPrice" 
+            formControlName="prodPrice">
+        </div>
+
+
+        <button type="submit" class="ui button" (click)="onSubmit(myForm.value)">Submit</button>
+    </form>
+</div>

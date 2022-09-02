@@ -1,0 +1,28 @@
+<!-- 
+<p>view-supplier works!</p>
+
+<button class = "btn btn-danger" (click)="onShowSupplier()">Show Supplier</button> -->
+<nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link" [routerLink]="['/add-product']">Add Product</a>
+    <a class="nav-item nav-link" [routerLink]="['/add-supplier']">Add Supplier</a>
+    <a class="nav-item nav-link" [routerLink]="['/update-product']">Update Product</a>
+    <a class="nav-item nav-link" [routerLink]="['/admin-view']">View Products</a>
+    <a class="nav-item nav-link active" [routerLink]="['/supplier-details']">View Suppliers</a>
+  </nav>
+<table class="table table-striped table-dark text-white">
+    <thead class="bg-dark text-white">
+        <th scope="col">Supplier Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col"></th>
+    </thead>
+
+<tbody id="suppliers" class="text-white">
+    <!-- <tr> -->
+    <tr *ngFor="let s of supplierArr">
+        <!-- <td>{{currentSupplier.supplier_id}}</td><td>{{currentSupplier.name}}</td><td>{{currentSupplier.Phone}}</td> -->
+        <td>{{s.supplier_id}}</td><td>{{s.name}}</td><td>{{s.Phone}}</td>
+        <td><button class="btn btn-danger" (click)="deleteSupplier(s.supplier_id)">Delete Supplier</button></td>
+    </tr>
+</tbody>
+</table>
