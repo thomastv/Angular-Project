@@ -1,0 +1,6 @@
+<div *ngIf="product; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <p class="bg-light text-dark">Id: {{product!.id}} Name: {{product!.name}} Price: {{product!.price}} Supplier
+        ID:{{product!.supplier_id}}</p>
+</ng-template>
+<ng-template #elseBlock>Select a Product to continue</ng-template>

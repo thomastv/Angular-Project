@@ -1,0 +1,164 @@
+<nav class="navbar navbar-dark navbar-expand-lg navbar-custom  bg-dark ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Tismo Electronics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 ">
+                <li class="nav-item ">
+                    <a class="nav-link" aria-current="page" [routerLink]="['/home']"
+                        routerLinkActive="activebutton">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/aboutus']" routerLinkActive="activebutton">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" routerLinkActive="activebutton">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="activebutton">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/contactus']" routerLinkActive="activebutton">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="signUpModalButton" class="btn btn-secondary ml-2 " data-bs-toggle="modal"
+                        data-bs-target="#signUpModal">
+                        Sign Up
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="loginModalButton" class="btn btn-primary btn-custom ms-3"
+                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sign up modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signUpModalLabel"> Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="signUpForm">
+                    <label for="name" class="form-label"> Name:</label>
+                    <br>
+                    <input type="text" name="username" id="username" formControlName="username" class="form-control">
+                    <div *ngIf="submitted && f['username'].errors" class="text-danger">
+                        <div *ngIf="f['username'].errors['required']"> Username is Required</div>
+                    </div>
+                    <br>
+                    <label for="email" class="form-label"> Email:</label>
+                    <br>
+                    <input type="email" name="email" id="email" formControlName="email" class="form-control">
+                    <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                        <div *ngIf="f['email'].errors['required']"> Email is Required</div>
+                    </div>
+                    <br>
+                    <label for="password" class="form-label"> Password:</label>
+                    <br>
+                    <input type="password" name="password" id="password" formControlName="password"
+                        class="form-control">
+                    <div *ngIf="submitted && f['password'].errors" class="text-danger">
+                        <div *ngIf="f['password'].errors['required']"> Password is Required</div>
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="signupButton" (click)="onSignUp()">Sign
+                            Up</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <form class="row g-3">
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Street Name"
+            required="required">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress2" class="form-label">Address 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Area"
+            required="required">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity" required="required" pattern=".{1,}">
+    </div>
+    <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="inputZip" pattern="[0-9]{6}" autofocus required
+            title="Please enter a valid pin">
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+            <label class="form-check-label" for="gridCheck">
+                Agree to terms and conditions
+            </label>
+        </div>
+    </div>
+
+    
+
+</form> -->
+
+<!--Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <form [formGroup]="loginForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="loginInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginInputEmail1" aria-describedby="emailHelp"
+                            formControlName="email">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginInputPassword1" formControlName="password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="loginCheck1">
+                        <label class="form-check-label" for="loginCheck1">Keep me signed in</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button submit" class="btn btn-primary" id="loginModalButton" (click)="onLogin()">Log
+                        In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

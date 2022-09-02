@@ -1,0 +1,39 @@
+<mat-tab-group>
+    <mat-tab label="Products">
+        <div class="row">
+            <div class="col-md-6">
+                <app-add-product></app-add-product>
+            </div>
+            <div class="col-md-6">
+                <app-update-product></app-update-product>
+            </div>
+        </div>
+
+        <app-products [isAdmin]="true"></app-products>
+
+    </mat-tab>
+    <mat-tab label="Users">
+
+        <div class="row">
+            <div class="col-md-6">
+                <app-add-user></app-add-user>
+            </div>
+            <div class="col-md-6">
+                <app-update-user></app-update-user>
+            </div>
+        </div>
+        <app-view-user></app-view-user>
+    </mat-tab>
+    <mat-tab label="Suppliers">
+        <div class="row">
+            <div class="col-md-6">
+                <app-add-supplier></app-add-supplier>
+            </div>
+            <div class="col-md-6">
+                <app-update-supplier></app-update-supplier>
+            </div>
+        </div>
+
+        <app-supplier-view></app-supplier-view>
+    </mat-tab>
+</mat-tab-group>

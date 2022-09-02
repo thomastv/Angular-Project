@@ -1,0 +1,27 @@
+<div>
+    <br>
+    <h2>USERS</h2>
+    <div class="p-3 mb-2 bg-dark ">
+        <table class="table table-striped table-dark text-white">
+            <thead>
+                <th scope="col">Id</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+            </thead>
+            <tbody id="products" class="text-white">
+                <tr *ngFor="let p of usersList" class="align-middle">
+                    <td>{{p.id}}</td>
+                    <td>{{p.username}}</td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.password}}
+                    </td>
+                    <td>{{p.role}}</td>
+                    <td><button class="btn btn-primary" (click)="deleteUser(p.id)">Delete User</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

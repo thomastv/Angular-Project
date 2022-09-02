@@ -1,0 +1,26 @@
+<br>
+<h2>Suppliers</h2>
+<div class="p-3 mb-2 bg-dark ">
+    <table class="table table-striped table-dark text-white">
+        <thead>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Action</th>
+
+        </thead>
+        <tbody id="suppliers" class="text-white">
+            <tr *ngFor="let p of suppliersList" class="align-middle">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.location}}</td>
+                <td><button class="btn btn-primary" (click)="deleteSupplier(p.id)">Delete Supplier</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div *ngIf="selectedSupplier" class="bg-light text-dark">
+    Selected Supplier: ID {{selectedSupplier.id}} Name: {{selectedSupplier.name}} Location:
+    {{selectedSupplier.location}}
+</div> -->
