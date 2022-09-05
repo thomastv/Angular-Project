@@ -17,7 +17,13 @@ export class ViewUserComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.userService.deleteUser(id)
+
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.userService.deleteUser(id)
+    } else {
+      console.log('Nope');
+    }
+
   }
 
 }

@@ -1,26 +1,29 @@
-<h2>Add Supplier</h2>
-<form [formGroup]="myForm">
-    <label for="name"> Name:</label>
-    <br>
-    <input type="text" name="name" id="name" formControlName="name">
-    <div *ngIf="submitted && f['name'].errors" class="text-danger">
-        <div *ngIf="f['name'].errors['required']"> Name of supplier is Required</div>
-    </div>
-    <br>
-    <label for="id"> ID:</label>
-    <br>
-    <input type="number" name="id" id="id" formControlName="id">
-    <div *ngIf="submitted && f['id'].errors" class="text-danger">
-        <div *ngIf="f['id'].errors['required']"> ID is Required</div>
-    </div>
-    <br>
-    <label for="location"> Location:</label>
-    <br>
-    <input type="text" name="location" id="location" formControlName="location">
-    <div *ngIf="submitted && f['location'].errors" class="text-danger">
-        <div *ngIf="f['location'].errors['required']"> Location is Required</div>
-    </div>
-    <br>
-    <br>
-    <button type="submit" class="btn btn-primary" (click)="AddSupplier()">Add Supplier</button>
-</form>
+<div class="p-4">
+    <h2>Add Supplier</h2>
+    <form [formGroup]="myForm">
+        <label for="name"> Name:</label>
+        <br>
+        <input type="text" name="name" id="name" formControlName="name">
+        <div *ngIf="submitted && f['name'].errors" class="text-danger">
+            <div *ngIf="f['name'].errors['required']"> Name of supplier is Required</div>
+        </div>
+        <br>
+        <label for="id"> ID:</label>
+        <br>
+        <input type="number" name="id" id="id" formControlName="id">
+        <div *ngIf="submitted && f['id'].errors" class="text-danger">
+            <div *ngIf="f['id'].errors['required']"> ID is Required</div>
+        </div>
+        <br>
+        <label for="location"> Location:</label>
+        <br>
+        <input type="text" name="location" id="location" formControlName="location">
+        <div *ngIf="submitted && f['location'].errors" class="text-danger">
+            <div *ngIf="f['location'].errors['required']"> Location is Required</div>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="AddSupplier()">Add Supplier</button>
+    </form>
+
+</div>

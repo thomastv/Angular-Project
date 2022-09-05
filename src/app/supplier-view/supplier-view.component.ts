@@ -32,7 +32,12 @@ export class SupplierViewComponent implements OnInit {
   }
 
   deleteSupplier(id: number) {
-    this.supplierService.deleteSupplier(id)
+    if (confirm('Are you sure you want to delete this supplier?')) {
+      this.supplierService.deleteSupplier(id)
+    } else {
+      console.log('Nope');
+    }
+
   }
 
 }

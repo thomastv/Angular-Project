@@ -3,36 +3,74 @@
         Selected Product
     </div>
     <app-product-detail [product]="selectedProduct"></app-product-detail> -->
-    <br><br>
+    <div *ngIf="!isAdmin"><br><br></div>
+
     <h2>Products</h2>
-    <table class="table table-striped table-dark text-white">
-        <thead>
-            <th scope="col">Id</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Image</th>
-            <th scope="col">View Details</th>
-            <th *ngIf="isAdmin" scope="col">Action</th>
-            <!-- <th scope="col">Supplier ID</th> -->
-        </thead>
-        <tbody id="products" class="text-white">
-            <tr *ngFor="let p of productsArray" class="align-middle">
-                <td>{{p.id}}</td>
-                <td>{{p.name}}</td>
-                <td>{{p.price}}</td>
-                <td>
-                    <div class="card bg-dark" style="width: 18rem;">
-                        <img src={{p.img_path}} class="card-img-top" alt="laptopimage">
-                    </div>
-                </td>
-                <td><button class="btn btn-primary" (click)="viewProduct(p.id)">View Product</button></td>
-                <td *ngIf="isAdmin"><button class="btn btn-primary" (click)="deleteProduct(p.id)">Delete
-                        Product</button></td>
-                <!-- <td>
+    <div *ngIf="isAdmin" class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-2"><button type="button" id="addProductModalButton" class="btn btn-primary btn-custom ms-3"
+                data-bs-toggle="modal" data-bs-target="#addProductModal">
+                Add Product
+            </button></div>
+        <div class="col-md-2"> <button type="button" id="updateProductModalButton"
+                class="btn btn-primary btn-custom ms-3" data-bs-toggle="modal" data-bs-target="#updateProductModal">
+                Update Product
+            </button></div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br><br>
+
+    <!--Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <app-add-product></app-add-product>
+            </div>
+        </div>
+    </div>
+
+    <!--Update Product Modal -->
+    <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <app-update-product></app-update-product>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped table-dark text-white">
+            <thead>
+                <th scope="col">Id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">View Details</th>
+                <th *ngIf="isAdmin" scope="col">Action</th>
+                <!-- <th scope="col">Supplier ID</th> -->
+            </thead>
+            <tbody id="products" class="text-white">
+                <tr *ngFor="let p of productsArray" class="align-middle">
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.price}}</td>
+                    <td>
+                        <div class="card bg-dark" style="max-width: 300px; min-width: 50px;">
+                            <img src={{p.img_path}} class="card-img-top img-fluid" alt="laptopimage">
+                        </div>
+                    </td>
+                    <td><button class="btn btn-primary" (click)="viewProduct(p.id)">View Product</button></td>
+                    <td *ngIf="isAdmin"><button class="btn btn-outline-danger" (click)="deleteProduct(p.id)">Delete
+                            Product</button></td>
+                    <!-- <td>
                     <app-product-detail [product]="p"> </app-product-detail>
                 </td> -->
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>

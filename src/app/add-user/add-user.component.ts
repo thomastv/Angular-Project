@@ -37,7 +37,7 @@ export class AddUserComponent implements OnInit {
     }
     else {
       this.userService.addUser(this.myForm.value.id, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
-      document.getElementById('addUserButton')?.click()
+      document.getElementById('addUserModalButton')?.click()
     }
   }
 

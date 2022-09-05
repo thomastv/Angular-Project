@@ -20,8 +20,6 @@ export class AddSupplierComponent implements OnInit {
       'id': [0, Validators.required],
       'location': ['', Validators.required],
     })
-
-
   }
 
   ngOnInit(): void {
@@ -36,6 +34,7 @@ export class AddSupplierComponent implements OnInit {
     }
     else {
       this.supplierService.addSupplier(this.myForm.value.id, this.myForm.value.location, this.myForm.value.name)
+      document.getElementById('addSupplierModalButton')?.click()
     }
   }
 

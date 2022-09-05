@@ -1,33 +1,35 @@
-<h2>Update Supplier</h2>
-<form [formGroup]="myForm">
-    <label class="form-label" for="id"> Select a supplier to update:</label>
-    <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
-        <option disabled selected>Select a value</option>
-        <option *ngFor="let p of suppliersList" [ngValue]="p.id">{{p.name}}</option>
-    </select>
-    <div *ngIf="selectedSupplier">
-        <label for="name"> Name:</label>
-        <br>
-        <input type="text" name="name" id="name" formControlName="name">
-        <div *ngIf="submitted && f['name'].errors" class="text-danger">
-            <div *ngIf="f['name'].errors['required']"> Name is Required</div>
+<div class="p-4">
+    <h2>Update Supplier</h2>
+    <form [formGroup]="myForm">
+        <label class="form-label" for="id"> Select a supplier to update:</label>
+        <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
+            <option disabled selected>Select a value</option>
+            <option *ngFor="let p of suppliersList" [ngValue]="p.id">{{p.name}}</option>
+        </select>
+        <div *ngIf="selectedSupplier">
+            <label for="name"> Name:</label>
+            <br>
+            <input type="text" name="name" id="name" formControlName="name">
+            <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                <div *ngIf="f['name'].errors['required']"> Name is Required</div>
+            </div>
+            <br>
+            <label for="id"> ID:</label>
+            <br>
+            <input type="number" name="id" id="id" formControlName="id" readonly>
+            <div *ngIf="submitted && f['id'].errors" class="text-danger">
+                <div *ngIf="f['id'].errors['required']"> ID is Required</div>
+            </div>
+            <br>
+            <label for="location"> Location:</label>
+            <br>
+            <input type="text" name="location" id="location" formControlName="location">
+            <div *ngIf="submitted && f['location'].errors" class="text-danger">
+                <div *ngIf="f['location'].errors['required']"> Location is Required</div>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="updateSupplier()">Update User</button>
         </div>
-        <br>
-        <label for="id"> ID:</label>
-        <br>
-        <input type="number" name="id" id="id" formControlName="id" readonly>
-        <div *ngIf="submitted && f['id'].errors" class="text-danger">
-            <div *ngIf="f['id'].errors['required']"> ID is Required</div>
-        </div>
-        <br>
-        <label for="location"> Location:</label>
-        <br>
-        <input type="text" name="location" id="location" formControlName="location">
-        <div *ngIf="submitted && f['location'].errors" class="text-danger">
-            <div *ngIf="f['location'].errors['required']"> Location is Required</div>
-        </div>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-primary" (click)="updateSupplier()">Update User</button>
-    </div>
-</form>
+    </form>
+</div>

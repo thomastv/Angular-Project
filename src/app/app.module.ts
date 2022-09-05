@@ -27,6 +27,7 @@ import { AdminGuard } from './guards/adminguard';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateSupplierComponent } from './update-supplier/update-supplier.component';
 import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
+import { LifeCycleTestComponent } from './life-cycle-test/life-cycle-test.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CustomValidatorComponent } from './custom-validator/custom-validator.co
     UpdateUserComponent,
     UpdateSupplierComponent,
     CustomValidatorComponent,
+    LifeCycleTestComponent,
   ],
   imports: [
     BrowserModule,

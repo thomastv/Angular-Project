@@ -47,6 +47,7 @@ export class UpdateProductComponent implements OnInit {
 
   UpdateProduct() {
     this.productService.updateProduct(this.selectedProduct!, this.myForm.value.id, this.myForm.value.name, this.myForm.value.price, this.myForm.value.supplier_id, this.myForm.value.image_path);
+    document.getElementById('updateProductModalButton')?.click()
   }
 
 }

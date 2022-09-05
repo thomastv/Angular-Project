@@ -1,5 +1,41 @@
 <br>
 <h2>Suppliers</h2>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2"><button type="button" id="addSupplierModalButton" class="btn btn-primary btn-custom ms-3"
+            data-bs-toggle="modal" data-bs-target="#addSupplierModal">
+            Add Supplier
+        </button></div>
+    <div class="col-md-2"> <button type="button" id="updateSupplierModalButton" class="btn btn-primary btn-custom ms-3"
+            data-bs-toggle="modal" data-bs-target="#updateSupplierModal">
+            Update Supplier
+        </button></div>
+    <div class="col-md-4"></div>
+</div>
+
+<br><br>
+
+<!--Add Supplier Modal -->
+<div class="modal fade" id="addSupplierModal" tabindex="-1" aria-labelledby="addSupplierModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <app-add-supplier></app-add-supplier>
+        </div>
+    </div>
+</div>
+
+<!--Update Supplier Modal -->
+<div class="modal fade" id="updateSupplierModal" tabindex="-1" aria-labelledby="updateSupplierModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <app-update-supplier></app-update-supplier>
+        </div>
+    </div>
+</div>
+
+<!-- Suppliers Table -->
 <div class="p-3 mb-2 bg-dark ">
     <table class="table table-striped table-dark text-white">
         <thead>
@@ -14,7 +50,7 @@
                 <td>{{p.id}}</td>
                 <td>{{p.name}}</td>
                 <td>{{p.location}}</td>
-                <td><button class="btn btn-primary" (click)="deleteSupplier(p.id)">Delete Supplier</button></td>
+                <td><button class="btn btn-outline-danger" (click)="deleteSupplier(p.id)">Delete Supplier</button></td>
             </tr>
         </tbody>
     </table>

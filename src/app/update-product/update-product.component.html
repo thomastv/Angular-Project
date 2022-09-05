@@ -1,47 +1,49 @@
-<h2>Update Product</h2>
-<form [formGroup]="myForm">
-    <label class="form-label" for="id"> Select a product for Update:</label>
-    <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
-        <option disabled selected>Select a value</option>
-        <option *ngFor="let p of productsArray" [ngValue]="p.id">{{p.name}}</option>
-    </select>
-    <div *ngIf="selectedProduct">
-        <label for="name"> Name:</label>
-        <br>
-        <input type="text" name="name" id="name" formControlName="name">
-        <div *ngIf="submitted && f['name'].errors" class="text-danger">
-            <div *ngIf="f['name'].errors['required']"> Name is Required</div>
+<div class="p-4">
+    <h2>Update Product</h2>
+    <form [formGroup]="myForm">
+        <label class="form-label" for="id"> Select a product for Update:</label>
+        <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
+            <option disabled selected>Select a value</option>
+            <option *ngFor="let p of productsArray" [ngValue]="p.id">{{p.name}}</option>
+        </select>
+        <div *ngIf="selectedProduct">
+            <label for="name"> Name:</label>
+            <br>
+            <input type="text" name="name" id="name" formControlName="name">
+            <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                <div *ngIf="f['name'].errors['required']"> Name is Required</div>
+            </div>
+            <br>
+            <label for="id"> ID:</label>
+            <br>
+            <input type="number" name="id" id="id" formControlName="id" readonly>
+            <div *ngIf="submitted && f['id'].errors" class="text-danger">
+                <div *ngIf="f['id'].errors['required']"> ID is Required</div>
+            </div>
+            <br>
+            <label for="price"> Price:</label>
+            <br>
+            <input type="number" name="price" id="price" formControlName="price">
+            <div *ngIf="submitted && f['price'].errors" class="text-danger">
+                <div *ngIf="f['price'].errors['required']"> Price is Required</div>
+            </div>
+            <br>
+            <label for="supplier_id"> Supplier Id:</label>
+            <br>
+            <input type="number" name="supplier_id" id="supplier_id" formControlName="supplier_id">
+            <div *ngIf="submitted && f['supplier_id'].errors" class="text-danger">
+                <div *ngIf="f['supplier_id'].errors['required']"> Supplier ID is Required</div>
+            </div>
+            <br>
+            <label for="image_path">Image Path:</label>
+            <br>
+            <input type="text" name="image_path" id="image_path" formControlName="image_path">
+            <div *ngIf="submitted && f['image_path'].errors" class="text-danger">
+                <div *ngIf="f['image_path'].errors['required']"> Image path is Required</div>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="UpdateProduct()">Update Product</button>
         </div>
-        <br>
-        <label for="id"> ID:</label>
-        <br>
-        <input type="number" name="id" id="id" formControlName="id" readonly>
-        <div *ngIf="submitted && f['id'].errors" class="text-danger">
-            <div *ngIf="f['id'].errors['required']"> ID is Required</div>
-        </div>
-        <br>
-        <label for="price"> Price:</label>
-        <br>
-        <input type="number" name="price" id="price" formControlName="price">
-        <div *ngIf="submitted && f['price'].errors" class="text-danger">
-            <div *ngIf="f['price'].errors['required']"> Price is Required</div>
-        </div>
-        <br>
-        <label for="supplier_id"> Supplier Id:</label>
-        <br>
-        <input type="number" name="supplier_id" id="supplier_id" formControlName="supplier_id">
-        <div *ngIf="submitted && f['supplier_id'].errors" class="text-danger">
-            <div *ngIf="f['supplier_id'].errors['required']"> Supplier ID is Required</div>
-        </div>
-        <br>
-        <label for="image_path">Image Path:</label>
-        <br>
-        <input type="text" name="image_path" id="image_path" formControlName="image_path">
-        <div *ngIf="submitted && f['image_path'].errors" class="text-danger">
-            <div *ngIf="f['image_path'].errors['required']"> Image path is Required</div>
-        </div>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-primary" (click)="UpdateProduct()">Update Product</button>
-    </div>
-</form>
+    </form>
+</div>

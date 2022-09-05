@@ -33,7 +33,12 @@ export class ProductsComponent implements OnInit {
     this.selectedProduct = this.productsService.getProductById(id)
   }
   deleteProduct(id: number) {
-    this.productsService.deleteProduct(id)
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productsService.deleteProduct(id)
+    } else {
+      console.log('Nope');
+    }
+
   }
 
   onSubmit(username: HTMLInputElement, password: HTMLInputElement) {

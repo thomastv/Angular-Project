@@ -1,47 +1,49 @@
-<h2>Update User</h2>
-<form [formGroup]="myForm">
-    <label class="form-label" for="id"> Select a user to Update:</label>
-    <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
-        <option disabled selected>Select a value</option>
-        <option *ngFor="let p of usersList" [ngValue]="p.id">{{p.username}}</option>
-    </select>
-    <div *ngIf="selectedUser">
-        <label for="username"> Name:</label>
-        <br>
-        <input type="text" name="username" id="username" formControlName="username">
-        <div *ngIf="submitted && f['username'].errors" class="text-danger">
-            <div *ngIf="f['username'].errors['required']"> Username is Required</div>
+<div class="p-4">
+    <h2>Update User</h2>
+    <form [formGroup]="myForm">
+        <label class="form-label" for="id"> Select a user to Update:</label>
+        <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
+            <option disabled selected>Select a value</option>
+            <option *ngFor="let p of usersList" [ngValue]="p.id">{{p.username}}</option>
+        </select>
+        <div *ngIf="selectedUser">
+            <label for="username"> Name:</label>
+            <br>
+            <input type="text" name="username" id="username" formControlName="username">
+            <div *ngIf="submitted && f['username'].errors" class="text-danger">
+                <div *ngIf="f['username'].errors['required']"> Username is Required</div>
+            </div>
+            <br>
+            <label for="id"> ID:</label>
+            <br>
+            <input type="number" name="id" id="id" formControlName="id" readonly>
+            <div *ngIf="submitted && f['id'].errors" class="text-danger">
+                <div *ngIf="f['id'].errors['required']"> ID is Required</div>
+            </div>
+            <br>
+            <label for="email"> Email:</label>
+            <br>
+            <input type="text" name="email" id="email" formControlName="email">
+            <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                <div *ngIf="f['email'].errors['required']"> Email is Required</div>
+            </div>
+            <br>
+            <label for="password"> Password:</label>
+            <br>
+            <input type="text" name="password" id="password" formControlName="password">
+            <div *ngIf="submitted && f['password'].errors" class="text-danger">
+                <div *ngIf="f['password'].errors['required']"> Password is Required</div>
+            </div>
+            <br>
+            <label for="role">Role:</label>
+            <br>
+            <input type="text" name="role" id="role" formControlName="role">
+            <div *ngIf="submitted && f['role'].errors" class="text-danger">
+                <div *ngIf="f['role'].errors['required']"> Role is Required</div>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="updateUser()">Update User</button>
         </div>
-        <br>
-        <label for="id"> ID:</label>
-        <br>
-        <input type="number" name="id" id="id" formControlName="id" readonly>
-        <div *ngIf="submitted && f['id'].errors" class="text-danger">
-            <div *ngIf="f['id'].errors['required']"> ID is Required</div>
-        </div>
-        <br>
-        <label for="email"> Email:</label>
-        <br>
-        <input type="text" name="email" id="email" formControlName="email">
-        <div *ngIf="submitted && f['email'].errors" class="text-danger">
-            <div *ngIf="f['email'].errors['required']"> Email is Required</div>
-        </div>
-        <br>
-        <label for="password"> Password:</label>
-        <br>
-        <input type="text" name="password" id="password" formControlName="password">
-        <div *ngIf="submitted && f['password'].errors" class="text-danger">
-            <div *ngIf="f['password'].errors['required']"> Password is Required</div>
-        </div>
-        <br>
-        <label for="role">Role:</label>
-        <br>
-        <input type="text" name="role" id="role" formControlName="role">
-        <div *ngIf="submitted && f['role'].errors" class="text-danger">
-            <div *ngIf="f['role'].errors['required']"> Role is Required</div>
-        </div>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-primary" (click)="updateUser()">Update User</button>
-    </div>
-</form>
+    </form>
+</div>

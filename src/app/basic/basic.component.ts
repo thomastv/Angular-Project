@@ -11,8 +11,11 @@ export class BasicComponent implements OnInit {
   @Output() ee: EventEmitter<string>;
   @Input() msg: string = "Initial"
 
+  testNumber: number = 0
 
-
+  changeNumber() {
+    this.testNumber++
+  }
   constructor() {
     this.ee = new EventEmitter<string>();
   }
