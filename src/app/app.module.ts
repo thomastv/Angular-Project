@@ -23,10 +23,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AddSupplierComponent } from './add-supplier/add-supplier.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminTabGroupComponent } from './admin-tab-group/admin-tab-group.component';
-import { MatTabsModule } from '@angular/material/tabs'
 import { AdminGuard } from './guards/adminguard';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateSupplierComponent } from './update-supplier/update-supplier.component';
+import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import { UpdateSupplierComponent } from './update-supplier/update-supplier.compo
     AdminTabGroupComponent,
     UpdateUserComponent,
     UpdateSupplierComponent,
-
+    CustomValidatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +58,6 @@ import { UpdateSupplierComponent } from './update-supplier/update-supplier.compo
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatTabsModule,
 
   ],
   providers: [

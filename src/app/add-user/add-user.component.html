@@ -1,3 +1,28 @@
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- <button type="button" id="loginModalButton" class="btn btn-primary btn-custom ms-3" data-bs-toggle="modal"
+    data-bs-target="#myModal">
+    Login
+</button> -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">my</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button submit" class="btn btn-primary" id="myModalButton">Log In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h2>Add User</h2>
 
 <form [formGroup]="myForm">

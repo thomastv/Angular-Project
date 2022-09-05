@@ -41,4 +41,9 @@ export class AddUserComponent implements OnInit {
     }
   }
 
+  toggleModal() {
+    document.getElementById('openModalButton')?.click()
+
+  }
+
 }

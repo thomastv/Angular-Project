@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MustMatch } from '../helpers/validators';
 import { UserService } from '../user.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class BannerComponent implements OnInit {
       'username': ['', Validators.required],
       'password': ['', Validators.required],
       'email': ['', Validators.required],
-    })
+      'confirmPassword': ['', Validators.required]
+    }, { validator: MustMatch('password', 'confirmPassword') })
 
     this.loginForm = fb.group({
       'password': ['', Validators.required],
