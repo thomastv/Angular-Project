@@ -1,4 +1,6 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Product } from './models/product';
 
 @Injectable({
@@ -7,14 +9,20 @@ import { Product } from './models/product';
 export class ProductService {
 
   private productsArray: Product[] = []
+  httpHeader = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
+
+  baseUrl: string
 
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = 'http://localhost:3000'
     this.productsArray = [
-      new Product(1, "Laptop", 20000, 1, "assets/images/laptop.jpg"),
-      new Product(2, "USB", 200, 2, "assets/images/usb.jpg"),
-      new Product(3, "Mobile", 15000, 3, "assets/images/mobile.jpg"),
-      new Product(4, "Cable", 500, 4, "assets/images/cable.jpg"),
+      // new Product(1, "Laptop", 20000, 1, "assets/images/laptop.jpg"),
+      // new Product(2, "USB", 200, 2, "assets/images/usb.jpg"),
+      // new Product(3, "Mobile", 15000, 3, "assets/images/mobile.jpg"),
+      // new Product(4, "Cable", 500, 4, "assets/images/cable.jpg"),
     ]
   }
 
@@ -22,10 +30,18 @@ export class ProductService {
     return this.productsArray;
   }
 
+  getProductsHttp(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.baseUrl + '/products').pipe(retry(1), catchError(this.httpError))
+  }
+
   addProduct(id: number, name: string, price: number, supplier_id: number, image_path: string) {
     var newProduct = new Product(id, name, price, supplier_id, image_path)
     this.productsArray.push(newProduct)
 
+  }
+
+  addProductHttp(id: number, name: string, price: number, supplier_id: number, image_path: string) {
+    var newProduct = new Product(id, name, price, supplier_id, image_path)
   }
 
   updateProduct(oldProduct: Product, id: number, name: string, price: number, supplier_id: number, image_path: string) {
@@ -45,16 +61,23 @@ export class ProductService {
 
   getProductById(id: number): Product | undefined {
     return this.productsArray.find(element => element.id == id)
+  }
 
-
-    // this.productsArray.forEach(product => {
-    //   if (product.id == id) {
-    //     return product
-    //   }
-    // })
-    // throw "";
+  getProductByIdHttp(id: number): Observable<Product> {
+    return this.httpClient.get<Product>(this.baseUrl + '/products/' + id).pipe(retry(1), catchError(this.httpError))
   }
 
 
-
+  httpError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      msg = error.error.message;
+    }
+    else {
+      msg = `Error Code:${error.status}\nMessafe:${error.message}`;
+    }
+    console.log(msg);
+    return throwError(msg);
+  }
 }
+

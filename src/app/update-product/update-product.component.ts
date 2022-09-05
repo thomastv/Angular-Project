@@ -14,11 +14,11 @@ export class UpdateProductComponent implements OnInit {
   selectedProduct: Product | undefined
 
 
-  productsArray: Product[]
+  productsArray: Product[] = []
 
 
   constructor(private productService: ProductService, fb: FormBuilder) {
-    this.productsArray = this.productService.getProducts();
+    this.productService.getProductsHttp().subscribe(data => { this.productsArray = data });
     this.myForm = fb.group({
       'name': ['', Validators.required],
       'id': [0, Validators.required],

@@ -1,0 +1,126 @@
+{
+  "products": [
+    {
+      "id": 101,
+      "name": "Laptop",
+      "price": "87000",
+      "supplier_id": 1001,
+      "img_path": "assets/images/laptop.jpg"
+    },
+    {
+      "id": 102,
+      "name": "USB",
+      "price": 1000,
+      "supplier_id": 1002,
+      "img_path": "assets/images/usb.jpg"
+    },
+    {
+      "id": 103,
+      "name": "Dongle",
+      "price": "500",
+      "supplier_id": 1003,
+      "img_path": "assets/images/mobile.jpg"
+    },
+    {
+      "id": 104,
+      "name": "Keyboard",
+      "price": "1200",
+      "supplier_id": 1004,
+      "img_path": "assets/images/cable.jpg"
+    },
+    {
+      "id": 105,
+      "name": "Mouse",
+      "price": "720",
+      "supplier_id": 1005,
+      "img_path": "assets/images/usb.jpg"
+    },
+    {
+      "name": "EarbudsUpdates",
+      "price": "8999",
+      "supplier_id": 1005,
+      "img_path": "assets/images/laptop.jpg",
+      "id": 107
+    }
+  ],
+  "suppliers": [
+    {
+      "id": 1001,
+      "name": "Croma",
+      "location": "Bangalore",
+      "logo_path": "assets/image/croma.jpg"
+    },
+    {
+      "id": 1002,
+      "name": "Sangeetha",
+      "location": "Madras",
+      "logo_path": "assets/image/sangeetha.png"
+    },
+    {
+      "id": 1003,
+      "name": "Pai Internantional",
+      "location": "Hyderabad",
+      "logo_path": "assets/image/pai.jpg"
+    },
+    {
+      "id": 1004,
+      "name": "Reliance Digital",
+      "location": "Mumbai",
+      "logo_path": "assets/image/rd.png"
+    },
+    {
+      "id": 1005,
+      "name": "Happy Digitals",
+      "location": "Delhi",
+      "logo_path": "assets/image/happy.jpg"
+    },
+    {
+      "id": 1006,
+      "name": "Digi World",
+      "location": "Nagpur",
+      "logo_path": "assets/image/digi.jpg"
+    },
+    {
+      "name": "Girias",
+      "location": "MangaloreUpdate",
+      "logo_path": "assets/image/girias.png",
+      "id": 1007
+    },
+    {
+      "id": 123,
+      "location": "Hyderabad, Indiaa",
+      "name": "Laptop",
+      "logo_path": ""
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Admin",
+      "email": "admin@legalcliq.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "Neha",
+      "email": "neha@legalcliq.com",
+      "password": "neha123",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "username": "James",
+      "email": "john@legalcliq.com",
+      "password": "john123",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "username": "Jerry",
+      "email": "jerry@legalcliq.com",
+      "password": "jerry123",
+      "role": "user"
+    }
+  ]
+}

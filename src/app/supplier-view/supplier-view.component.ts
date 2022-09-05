@@ -14,7 +14,8 @@ export class SupplierViewComponent implements OnInit {
 
   constructor(private supplierService: SupplierService) {
 
-    this.suppliersList = supplierService.getSuppliers()
+    this.suppliersList = []
+    supplierService.getSuppliersHttp().subscribe(data => { this.suppliersList = data })
 
   }
 

@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
   selectedProductSupplierId: number
 
   constructor(private productsService: ProductService) {
-    this.productsArray = productsService.getProducts()
+    this.productsService.getProductsHttp().subscribe(data => { this.productsArray = data })
     this.selectedProductSupplierId = 0
   }
 
@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit {
 
   viewProduct(id: number) {
     console.log("view product clicked", id)
-    this.selectedProduct = this.productsService.getProductById(id)
+    this.productsService.getProductByIdHttp(id).subscribe(data => { this.selectedProduct = data })
   }
   deleteProduct(id: number) {
     if (confirm('Are you sure you want to delete this product?')) {
@@ -39,6 +39,10 @@ export class ProductsComponent implements OnInit {
       console.log('Nope');
     }
 
+  }
+
+  addProductToCart(id: number) {
+    console.log(id)
   }
 
   onSubmit(username: HTMLInputElement, password: HTMLInputElement) {

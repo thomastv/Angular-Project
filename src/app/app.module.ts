@@ -28,6 +28,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdateSupplierComponent } from './update-supplier/update-supplier.component';
 import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
 import { LifeCycleTestComponent } from './life-cycle-test/life-cycle-test.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { LifeCycleTestComponent } from './life-cycle-test/life-cycle-test.compon
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
+    HttpClientModule,
   ],
   providers: [
     AdminGuard,

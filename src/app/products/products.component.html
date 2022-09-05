@@ -49,7 +49,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Image</th>
                 <th scope="col">View Details</th>
-                <th *ngIf="isAdmin" scope="col">Action</th>
+                <th scope="col">Action</th>
                 <!-- <th scope="col">Supplier ID</th> -->
             </thead>
             <tbody id="products" class="text-white">
@@ -62,9 +62,13 @@
                             <img src={{p.img_path}} class="card-img-top img-fluid" alt="laptopimage">
                         </div>
                     </td>
-                    <td><button class="btn btn-primary" (click)="viewProduct(p.id)">View Product</button></td>
+                    <td><button class="btn btn-outline-success" (click)="viewProduct(p.id)">View Product</button></td>
                     <td *ngIf="isAdmin"><button class="btn btn-outline-danger" (click)="deleteProduct(p.id)">Delete
                             Product</button></td>
+                    <td *ngIf="!isAdmin"><button class="btn btn-outline-primary" (click)="addProductToCart(p.id)">Add
+                            to
+                            Cart
+                        </button></td>
                     <!-- <td>
                     <app-product-detail [product]="p"> </app-product-detail>
                 </td> -->

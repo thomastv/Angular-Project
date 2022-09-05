@@ -33,6 +33,8 @@ export class BannerComponent implements OnInit {
 
   }
 
+  get isLoggedIn() { return this.userService.isLoggedIn }
+
   ngOnInit(): void {
   }
 
@@ -68,6 +70,13 @@ export class BannerComponent implements OnInit {
       }
     }
 
+  }
+  onLogOut() {
+    if (confirm('Are you sure you want to logout?')) {
+      this.userService.logoutUser()
+    } else {
+      console.log('Nope');
+    }
   }
 
 

@@ -23,16 +23,27 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/contactus']" routerLinkActive="activebutton">Contact Us</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!isLoggedIn" class="nav-item">
                     <button type="button" id="signUpModalButton" class="btn btn-secondary ml-2 " data-bs-toggle="modal"
                         data-bs-target="#signUpModal">
                         Sign Up
                     </button>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!isLoggedIn" class="nav-item">
                     <button type="button" id="loginModalButton" class="btn btn-primary btn-custom ms-3"
                         data-bs-toggle="modal" data-bs-target="#loginModal">
                         Login
+                    </button>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item">
+                    <button type="button" id="viewCartButton" class="btn btn-primary btn-custom ms-3">
+                        View Cart
+                    </button>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item">
+                    <button type="button" id="logOutButton" class="btn btn-primary btn-custom ms-3"
+                        (click)="onLogOut()">
+                        Logout
                     </button>
                 </li>
             </ul>

@@ -1,10 +1,30 @@
+$primaryColor: #86c232;
+$primaryColorDark: #61892F;
+
 .btn-primary {
-  background-color: #61892F !important;
-  border-color: #86c232 !important;
+  background-color: $primaryColorDark  !important;
+  border-color: $primaryColor  !important;
+}
+
+.btn-outline-primary {
+  border-color: $primaryColor  !important;
+  color: $primaryColor  !important;
+
+}
+
+.btn-outline-primary:hover {
+  color: #222 !important;
+  background-color: #c3d3ad !important;
+  border-color: #c3d3ad !important
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 .2rem rgba(179, 231, 148, 0.5)
 }
 
 footer a {
-  color: #86c232;
+  color: $primaryColor;
 }
 
 html,
@@ -19,7 +39,7 @@ body {
 
 h1,
 h2 {
-  color: #86c232;
+  color: $primaryColor;
 }
 
 html,

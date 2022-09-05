@@ -15,17 +15,20 @@ export class UpdateSupplierComponent implements OnInit {
   selectedSupplier: Supplier | undefined
 
 
-  suppliersList: Supplier[]
+  suppliersList: Supplier[] = []
 
 
   constructor(private supplierService: SupplierService, fb: FormBuilder) {
-    this.suppliersList = this.supplierService.getSuppliers();
+    this.supplierService.getSuppliersHttp().subscribe(data => {
+      this.suppliersList = data
+      this.selectedSupplier = this.suppliersList[0]
+    });
     this.myForm = fb.group({
       'name': ['', Validators.required],
       'id': [0, Validators.required],
       'location': ['', Validators.required],
     })
-    this.selectedSupplier = this.suppliersList[0]
+
   }
 
   get f() { return this.myForm.controls }

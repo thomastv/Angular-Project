@@ -8,9 +8,11 @@ import { UserService } from '../user.service';
   styleUrls: ['./view-user.component.scss']
 })
 export class ViewUserComponent implements OnInit {
-  usersList: User[]
+  usersList: User[] = []
   constructor(private userService: UserService) {
-    this.usersList = userService.getUsers()
+    userService.getUsersHttp().subscribe(data => {
+      this.usersList = data
+    })
   }
 
   ngOnInit(): void {

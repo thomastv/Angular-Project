@@ -33,7 +33,10 @@ export class AddSupplierComponent implements OnInit {
       console.log("Invalid")
     }
     else {
-      this.supplierService.addSupplier(this.myForm.value.id, this.myForm.value.location, this.myForm.value.name)
+      this.supplierService.addSupplierHttp(this.myForm.value.id, this.myForm.value.location, this.myForm.value.name).subscribe(data => {
+        console.log("Added", data)
+      })
+
       document.getElementById('addSupplierModalButton')?.click()
     }
   }

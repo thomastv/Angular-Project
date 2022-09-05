@@ -19,7 +19,11 @@ export class UpdateUserComponent implements OnInit {
 
 
   constructor(private userService: UserService, fb: FormBuilder) {
-    this.usersList = this.userService.getUsers();
+    this.usersList = [];
+    this.userService.getUsersHttp().subscribe(data => {
+      this.usersList = data
+      this.selectedUser = this.usersList[0]
+    })
     this.myForm = fb.group({
       'username': ['', Validators.required],
       'id': [0, Validators.required],
@@ -27,7 +31,7 @@ export class UpdateUserComponent implements OnInit {
       'password': ['', Validators.required],
       'role': ['', Validators.required],
     })
-    this.selectedUser = this.usersList[0]
+
   }
 
   get f() { return this.myForm.controls }
