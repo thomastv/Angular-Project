@@ -1,0 +1,45 @@
+<p>custom-validator works!</p>
+<div id="AddFormSupplier">
+    <form 
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit(myForm.value)"
+         class="ui form"
+         [class.error]="!myForm.valid && myForm.touched">
+
+        <div class="mb-3 field"
+              [class.error] = "!suppName.valid && suppName.touched">
+            <label for="name" class="form-label ">Password</label>
+            <input type="text" id="suppName" class="form-control" 
+            name="suppName" 
+            formControlName="suppName">
+            <div *ngIf="!suppName.valid"
+                class="ui error message">Supp is invalid</div>
+            <div *ngIf="suppName.hasError('invalidSupp')"
+             class="ui error message">Supp must begin with <span>123</span>
+            </div>
+            <!-- <div *ngIf="suppName.hasError('')"
+             class="ui error message">Supp must begin with <span>123</span>
+            </div> -->
+            <!-- <div *ngIf="submitted && f['suppName'].errors" class="text-danger">
+                <div *ngIf="f['suppName'].errors['required']">Supplier Name is required</div>
+            </div> -->
+        </div>
+        <div class="mb-3 field">
+            <label for="id" class="form-label ">Confirm Password</label>
+            <input type="value" id="confirmSupp" class="form-control" 
+            name="confirmSupp" 
+            formControlName="confirmSupp">
+            <div *ngIf="!confirmSupp.valid"
+                class="ui error message">pass is invalid</div>
+            <div *ngIf="confirmSupp.hasError('mustMatch')"
+             class="ui error message"><span>Passwords don't match</span>
+            </div>
+            <!-- <div *ngIf="confirmSupp.hasError('')"
+             class="ui error message">Supp must begin with <span>123</span>
+            </div> -->
+        </div>
+
+
+        <button type="submit" class="ui button">Submit</button>
+    </form>
+</div>

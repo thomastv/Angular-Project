@@ -23,6 +23,7 @@ import { AdminGuard } from 'src/guards/adminguard';
 import { ViewAdminProductsComponent } from './view-admin-products/view-admin-products.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { CartComponent } from './cart/cart.component';
+import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CartComponent } from './cart/cart.component';
     AddServiceComponent,
     ViewAdminProductsComponent,
     UserViewComponent,
-    CartComponent
+    CartComponent,
+    CustomValidatorComponent
   ],
   imports: [
     BrowserModule,
