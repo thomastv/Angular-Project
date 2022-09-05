@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 import { Product } from '../models/product';
 import { ProductService } from '../product.service';
 
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
   selectedProduct: Product | undefined
   selectedProductSupplierId: number
 
-  constructor(private productsService: ProductService) {
+  constructor(private productsService: ProductService,private cartService:CartService) {
     this.productsService.getProductsHttp().subscribe(data => { this.productsArray = data })
     this.selectedProductSupplierId = 0
   }
@@ -41,8 +42,8 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  addProductToCart(id: number) {
-    console.log(id)
+  addProductToCart(prod: Product) {
+    this.cartService.addProduct(prod);
   }
 
   onSubmit(username: HTMLInputElement, password: HTMLInputElement) {

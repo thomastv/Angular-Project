@@ -37,7 +37,7 @@
                 </li>
                 <li *ngIf="isLoggedIn" class="nav-item">
                     <button type="button" id="viewCartButton" class="btn btn-primary btn-custom ms-3">
-                        View Cart
+                        <a class="" [routerLink]="['/myCart']">My Cart</a>
                     </button>
                 </li>
                 <li *ngIf="isLoggedIn" class="nav-item">

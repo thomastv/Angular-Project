@@ -32,7 +32,13 @@ export class CartService {
     }
     console.log(this.getCartItems());
    }
-
+   decreseProduct(prod:Product){
+    var currentItem = this.myCart.cartItems.find((element) => element.product.id==prod.id)!;
+    if(currentItem.count == 1){
+      this.removeProduct(prod.id);
+    }
+    currentItem.count--;
+   }
    removeProduct(id:number){
     var currentItem = this.myCart.cartItems.find((element) => element.product.id==id)!;
     let index = this.myCart.cartItems.indexOf(currentItem);

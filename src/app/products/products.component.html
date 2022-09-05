@@ -65,7 +65,7 @@
                     <td><button class="btn btn-outline-success" (click)="viewProduct(p.id)">View Product</button></td>
                     <td *ngIf="isAdmin"><button class="btn btn-outline-danger" (click)="deleteProduct(p.id)">Delete
                             Product</button></td>
-                    <td *ngIf="!isAdmin"><button class="btn btn-outline-primary" (click)="addProductToCart(p.id)">Add
+                    <td *ngIf="!isAdmin"><button class="btn btn-outline-primary" (click)="addProductToCart(p)">Add
                             to
                             Cart
                         </button></td>

@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
-
+import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminViewComponent, canActivate: [AdminGuard] },
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'products/product', component: ProductDetailComponent },
   { path: 'updateProduct', component: UpdateProductComponent },
+  { path: 'myCart', component: CartComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
