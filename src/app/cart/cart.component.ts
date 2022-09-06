@@ -1,4 +1,3 @@
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Cart } from '../models/cart';
@@ -11,29 +10,36 @@ import { Product } from '../models/product';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  httpHeader = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
+  myCartItems: CartItem[] = [];
 
-  baseUrl: string
-  myCartItems:CartItem[];
-  myCart : Cart;
-  constructor(private cartService:CartService,) {
-      this.baseUrl = 'http://localhost:3000'
-      this.myCartItems = cartService.getCartItems();
-      this.myCart = cartService.getCart()
-   }
+  constructor(private cartService: CartService) {
+
+  }
 
   ngOnInit(): void {
-    
+    var userId = localStorage.getItem('userId')!
+    this.cartService.getCartForUserHttp(parseInt(userId)).subscribe(cart => {
+      console.log("Got Cart for user", cart)
+      console.log("Cart Total", cart)
+      this.myCartItems = cart.cartItems
+
+    })
   }
-  // viewProduct(id : number){
-  //   this.cartService.getCartItems
-  // }
-  increaseItem(prod:CartItem){
-    // this.cartService.addProduct(prod.product);
+
+  get totalPrice() {
+    var total = 0
+    this.myCartItems.forEach(cartItem => {
+      total += (cartItem.count * cartItem.product.price)
+    })
+    return total
   }
-  decreseItem(prod:CartItem){
-    this.cartService.decreseProduct(prod.product);
+
+  increaseItem(prod: CartItem) {
+    var userId = localStorage.getItem('userId')!
+    this.cartService.addProductHttp(prod.product, parseInt(userId));
+  }
+  decreseItem(prod: CartItem) {
+    var userId = localStorage.getItem('userId')!
+    this.cartService.decreaseProductCountHttp(prod.product, parseInt(userId));
   }
 }
