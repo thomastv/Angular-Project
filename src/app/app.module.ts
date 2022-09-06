@@ -32,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { SupplierDetailComponent } from './supplier-detail/supplier-detail.component';
 import { AttributeDirectiveComponent } from './attribute-directive/attribute-directive.component'
+import { UserDetailsComponent } from './user-details/user-details.component'
+import { CartGuard } from './guards/cartguard';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { AttributeDirectiveComponent } from './attribute-directive/attribute-dir
     CartComponent,
     SupplierDetailComponent,
     AttributeDirectiveComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,7 @@ import { AttributeDirectiveComponent } from './attribute-directive/attribute-dir
     HttpClientModule,
   ],
   providers: [
-    AdminGuard,
+    AdminGuard,CartGuard
   ],
   bootstrap: [AppComponent]
 })
