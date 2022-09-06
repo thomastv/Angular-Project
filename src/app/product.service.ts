@@ -42,6 +42,8 @@ export class ProductService {
 
   addProductHttp(id: number, name: string, price: number, supplier_id: number, image_path: string) {
     var newProduct = new Product(id, name, price, supplier_id, image_path)
+    console.log(newProduct)
+    return this.httpClient.post<Product>(this.baseUrl + '/products/', newProduct).pipe(retry(1), catchError(this.httpError))
   }
 
   updateProduct(oldProduct: Product, id: number, name: string, price: number, supplier_id: number, image_path: string) {
@@ -51,12 +53,23 @@ export class ProductService {
     oldProduct.supplier_id = supplier_id
     oldProduct.img_path = image_path
   }
+  updateProductHttp(oldProduct: Product, id: number, name: string, price: number, supplier_id: number, image_path: string) {
+    oldProduct.name = name
+    oldProduct.price = price
+    oldProduct.supplier_id = supplier_id
+    oldProduct.img_path = image_path
+    return this.httpClient.put<Product>(this.baseUrl + '/products/' + id, oldProduct).pipe(retry(1), catchError(this.httpError))
+  }
 
   deleteProduct(id: number) {
     var product = this.productsArray.find(product => product.id == id)
     var index = this.productsArray.indexOf(product!)
     this.productsArray.splice(index, 1)
 
+  }
+
+  deleteProductHttp(id:number){
+    return this.httpClient.get<Product>(this.baseUrl + '/products/' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   getProductById(id: number): Product | undefined {
@@ -80,4 +93,3 @@ export class ProductService {
     return throwError(msg);
   }
 }
-
