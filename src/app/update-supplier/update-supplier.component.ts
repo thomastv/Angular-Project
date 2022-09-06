@@ -47,7 +47,12 @@ export class UpdateSupplierComponent implements OnInit {
   }
 
   updateSupplier() {
-    this.supplierService.updateSupplier(this.selectedSupplier!, this.myForm.value.id, this.myForm.value.name, this.myForm.value.location);
+    // this.supplierService.updateSupplier(this.selectedSupplier!, this.myForm.value.id, this.myForm.value.name, this.myForm.value.location);
+    // document.getElementById('updateSupplierModalButton')?.click()
+
+    this.supplierService.updateSupplierHttp(this.selectedSupplier!, this.myForm.value.id, this.myForm.value.name, this.myForm.value.location).subscribe(data => {
+      console.log("updated" , data)
+    });
     document.getElementById('updateSupplierModalButton')?.click()
   }
 
