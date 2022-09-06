@@ -43,6 +43,7 @@
             <th scope="col">Name</th>
             <th scope="col">Location</th>
             <th scope="col">Action</th>
+            <th scope="col">Action</th>
 
         </thead>
         <tbody id="suppliers" class="text-white">
@@ -50,7 +51,9 @@
                 <td>{{p.id}}</td>
                 <td>{{p.name}}</td>
                 <td>{{p.location}}</td>
+                <td><button class="btn btn-outline-success" (click)="viewSupplier(p.id)">View Supplier</button></td>
                 <td><button class="btn btn-outline-danger" (click)="deleteSupplier(p.id)">Delete Supplier</button></td>
+                
             </tr>
         </tbody>
     </table>

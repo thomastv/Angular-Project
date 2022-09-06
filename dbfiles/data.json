@@ -19,11 +19,11 @@
       "name": "Dongle",
       "price": "500",
       "supplier_id": 1003,
-      "img_path": "assets/images/dongle.jpeg"
+      "img_path": "assets/images/mobile.jpg"
     },
     {
       "id": 104,
-      "name": "RJ-45",
+      "name": "Keyboard",
       "price": "1200",
       "supplier_id": 1004,
       "img_path": "assets/images/cable.jpg"
@@ -33,21 +33,14 @@
       "name": "Mouse",
       "price": "720",
       "supplier_id": 1005,
-      "img_path": "assets/images/mouse.jpg"
+      "img_path": "assets/images/usb.jpg"
     },
     {
-      "name": "Earbuds",
+      "name": "EarbudsUpdates",
       "price": "8999",
       "supplier_id": 1005,
-      "img_path": "assets/images/earpods.jpg",
+      "img_path": "assets/images/laptop.jpg",
       "id": 107
-    },
-    {
-      "id": 110,
-      "name": "Mobile",
-      "price": 40000,
-      "supplier_id": 1003,
-      "img_path": "assets/images/mobile.jpg"
     }
   ],
   "suppliers": [
@@ -55,49 +48,43 @@
       "id": 1001,
       "name": "Croma",
       "location": "Bangalore",
-      "logo_path": "assets/image/croma.jpg"
+      "logo_path": "assets/images/croma.png"
     },
     {
       "id": 1002,
       "name": "Sangeetha",
       "location": "Madras",
-      "logo_path": "assets/image/sangeetha.png"
+      "logo_path": "assets/images/sangeetha.jpg"
     },
     {
       "id": 1003,
       "name": "Pai Internantional",
       "location": "Hyderabad",
-      "logo_path": "assets/image/pai.jpg"
+      "logo_path": "assets/images/pai.png"
     },
     {
       "id": 1004,
       "name": "Reliance Digital",
       "location": "Mumbai",
-      "logo_path": "assets/image/rd.png"
+      "logo_path": "assets/images/reliance_digital.png"
     },
     {
       "id": 1005,
       "name": "Happy Digitals",
       "location": "Delhi",
-      "logo_path": "assets/image/happy.jpg"
+      "logo_path": "assets/images/happy.jpg"
     },
     {
       "id": 1006,
       "name": "Digi World",
       "location": "Nagpur",
-      "logo_path": "assets/image/digi.jpg"
+      "logo_path": "assets/images/digi_world.jpg"
     },
     {
       "name": "Girias",
       "location": "MangaloreUpdate",
-      "logo_path": "assets/image/girias.png",
+      "logo_path": "assets/images/girias.jpg",
       "id": 1007
-    },
-    {
-      "id": 123,
-      "location": "Hyderabad, Indiaa",
-      "name": "Laptop",
-      "logo_path": ""
     }
   ],
   "users": [
@@ -128,68 +115,6 @@
       "email": "jerry@legalcliq.com",
       "password": "jerry123",
       "role": "user"
-    }
-  ],
-  "carts": [
-    {
-      "id": 1,
-      "cartItems": [
-        {
-          "product": {
-            "id": 101,
-            "name": "Laptop",
-            "price": "87000",
-            "supplier_id": 1001,
-            "img_path": "assets/images/laptop.jpg"
-          },
-          "count": 1
-        },
-        {
-          "product": {
-            "id": 102,
-            "name": "USB",
-            "price": 1000,
-            "supplier_id": 1002,
-            "img_path": "assets/images/usb.jpg"
-          },
-          "count": 3
-        },
-        {
-          "product": {
-            "id": 105,
-            "name": "Mouse",
-            "price": "720",
-            "supplier_id": 1005,
-            "img_path": "assets/images/usb.jpg"
-          },
-          "count": 1
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "cartItems": [
-        {
-          "product": {
-            "id": 101,
-            "name": "Laptop",
-            "price": "87000",
-            "supplier_id": 1001,
-            "img_path": "assets/images/laptop.jpg"
-          },
-          "count": 10
-        },
-        {
-          "product": {
-            "id": 103,
-            "name": "Dongle",
-            "price": "500",
-            "supplier_id": 1003,
-            "img_path": "assets/images/mobile.jpg"
-          },
-          "count": 4
-        }
-      ]
     }
   ]
 }

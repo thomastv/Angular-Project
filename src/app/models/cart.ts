@@ -1,17 +1,13 @@
 import { CartItem } from "./cartItem";
 import { Product } from "./product";
 
-export class Cart {
-    id: number;
-
-    cartItems: CartItem[]
-    constructor(id: number, cartItems: CartItem[]) {
-        this.id = id;
-        this.cartItems = cartItems != null ? cartItems : []
+export class Cart{
+    cart_id:number;
+    user_id:number;
+    cartItems:CartItem[] = []
+    constructor(c_Id:number,u_Id:number){
+        this.cart_id = c_Id;
+        this.user_id = u_Id;
 
     }
-
-
 }
-
-// {id:number,cartItems:[{product:{"id": 101, "name": "Laptop", "price": "87000", "supplier_id": 1001, "img_path": "assets/images/laptop.jpg"},count:1}]}

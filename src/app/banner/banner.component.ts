@@ -59,24 +59,18 @@ export class BannerComponent implements OnInit {
       alert("Please enter all details")
     }
     else {
-      this.userService.getUserByMailAndPassword(this.loginForm.value.email, this.loginForm.value.password).subscribe(users => {
-        if (users.length == 0) {
-          alert("Invalid Credentials")
-        }
-        else {
-          var user = users[0]
-          console.log("User Data", user)
-          this.userService.loginUser(user)
-          document.getElementById('loginModalButton')?.click()
-          this.router.navigateByUrl('home')
-        }
-      }, error => {
-        console.log("Error from banner comp", error)
+      var loggedInUser = this.userService.loginUser(this.loginForm.value.email, this.loginForm.value.password);
+      if (loggedInUser == undefined) {
         alert("Invalid Credentials")
-      });
+      }
+      else {
+        localStorage.setItem("role", loggedInUser.role)
+        document.getElementById('loginModalButton')?.click()
+        this.router.navigateByUrl('home')
+      }
     }
-  }
 
+  }
   onLogOut() {
     if (confirm('Are you sure you want to logout?')) {
       this.userService.logoutUser()
