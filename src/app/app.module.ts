@@ -31,6 +31,8 @@ import { LifeCycleTestComponent } from './life-cycle-test/life-cycle-test.compon
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { UserDetailsComponent } from './user-details/user-details.component'
+import { CartGuard } from './guards/cartguard';
+import { AttributeDirectiveComponent } from './attribute-directive/attribute-directive.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { UserDetailsComponent } from './user-details/user-details.component'
     CustomValidatorComponent,
     LifeCycleTestComponent,
     CartComponent,
+    AttributeDirectiveComponent,
     UserDetailsComponent,
   ],
   imports: [
@@ -68,7 +71,7 @@ import { UserDetailsComponent } from './user-details/user-details.component'
     HttpClientModule,
   ],
   providers: [
-    AdminGuard,
+    AdminGuard, CartGuard
   ],
   bootstrap: [AppComponent]
 })

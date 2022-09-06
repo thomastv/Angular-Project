@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   @Input() product: Product | undefined
   supplier: Supplier | undefined
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private productsService: ProductService, private supplierService: SupplierService) {
+  constructor(private activatedRoute: ActivatedRoute, private productsService: ProductService, private supplierService: SupplierService) {
 
   }
 
@@ -29,7 +29,6 @@ export class ProductDetailComponent implements OnInit {
         this.product = product
         this.supplierService.getSupplierByIdHttp(product.supplier_id).subscribe(supplier => { this.supplier = supplier })
       })
-
     })
   }
 
