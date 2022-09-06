@@ -53,6 +53,9 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser() {
     this.userService.updateUser(this.selectedUser!, this.myForm.value.id, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role);
+    this.userService.updateUserHttp(this.selectedUser!, this.myForm.value.id, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role).subscribe(data => {
+      console.log("Updated", data)
+    });;
     document.getElementById('updateUserModalButton')?.click()
   }
 
