@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   selectedProduct: Product | undefined
   selectedProductSupplierId: number
 
-  constructor(private productsService: ProductService,private cartService:CartService,private router:Router) {
+  constructor(private productsService: ProductService, private cartService: CartService, private router: Router) {
     this.productsService.getProductsHttp().subscribe(data => { this.productsArray = data })
     this.selectedProductSupplierId = 0
   }
@@ -31,13 +31,15 @@ export class ProductsComponent implements OnInit {
   }
 
   viewProduct(id: number) {
-    // console.log("view product clicked", id)
-    // this.productsService.getProductByIdHttp(id).subscribe(data => { this.selectedProduct = data })
     this.router.navigate(['product/' + id])
   }
+
   deleteProduct(id: number) {
     if (confirm('Are you sure you want to delete this product?')) {
       this.productsService.deleteProduct(id)
+      this.productsService.deleteProductHttp(id).subscribe(data => {
+        console.log("Added", data)
+      })
     } else {
       console.log('Nope');
     }
@@ -45,7 +47,13 @@ export class ProductsComponent implements OnInit {
   }
 
   addProductToCart(prod: Product) {
-    // this.cartService.addProduct(prod);
+    var userId = localStorage.getItem('userId')
+    if (userId == undefined) {
+      console.log("Not Logged In")
+      alert("Please log in to continue")
+      return
+    }
+    this.cartService.addProductHttp(prod, parseInt(userId!));
   }
 
   onSubmit(username: HTMLInputElement, password: HTMLInputElement) {
