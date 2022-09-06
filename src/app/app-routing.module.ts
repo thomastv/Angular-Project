@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'products/product', component: ProductDetailComponent },
+  // { path: 'products/product', component: ProductDetailComponent },
   { path: 'updateProduct', component: UpdateProductComponent },
-  { path: 'myCart', component: CartComponent},
+  { path: 'myCart', component: CartComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

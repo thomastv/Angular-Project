@@ -41,6 +41,11 @@ export class SupplierService {
     return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers', newSupplier)
   }
 
+  getSupplierByIdHttp(id: number): Observable<Supplier> {
+    return this.httpClient.get<Supplier>(this.baseUrl + '/suppliers/' + id).pipe(retry(1), catchError(this.httpError))
+  }
+
+
   updateSupplier(oldUser: Supplier, id: number, name: string, location: string) {
     oldUser.name = name
     oldUser.location = location
