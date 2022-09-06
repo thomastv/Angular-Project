@@ -1,0 +1,24 @@
+<div class="text-center" style="max-width: 50%;">
+    <h4 class="ui horizontal divider header">
+        ngStyle literal
+    </h4>
+
+
+    <div [ngStyle]="{color:color}">
+        used fixed white text on red bg
+    </div>
+
+
+    <div [style.background-color]="color">
+        <div style="height: 200px; width: 100%;">
+            Hey there
+        </div>
+    </div>
+
+    <div [ngClass]="{bordered:false}"> Never</div>
+    <div [ngClass]="{bordered:true}"> Always</div>
+    <div [ngClass]="{bordered:isBordered}"> Dynamic</div>
+
+    <div [ngClass]="classesObj"> Using obj var border {{classesObj.bordered?"ON":"OFF"}} </div>
+    <button (click)="toggleBorder()">Toggle</button>
+</div>

@@ -122,5 +122,57 @@
       "password": "jerry123",
       "role": "user"
     }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "cartItems": [
+        {
+          "product": {
+            "id": 101,
+            "name": "Laptop",
+            "price": "87000",
+            "supplier_id": 1001,
+            "img_path": "assets/images/laptop.jpg"
+          },
+          "count": 3
+        },
+        {
+          "product": {
+            "id": 102,
+            "name": "USB",
+            "price": 1000,
+            "supplier_id": 1002,
+            "img_path": "assets/images/usb.jpg"
+          },
+          "count": 9
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "cartItems": [
+        {
+          "product": {
+            "id": 101,
+            "name": "Laptop",
+            "price": "87000",
+            "supplier_id": 1001,
+            "img_path": "assets/images/laptop.jpg"
+          },
+          "count": 10
+        },
+        {
+          "product": {
+            "id": 103,
+            "name": "Dongle",
+            "price": "500",
+            "supplier_id": 1003,
+            "img_path": "assets/images/mobile.jpg"
+          },
+          "count": 4
+        }
+      ]
+    }
   ]
 }

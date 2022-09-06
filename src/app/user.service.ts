@@ -1,18 +1,21 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, lastValueFrom, Observable, retry, throwError } from 'rxjs';
+import { CartService } from './cart.service';
 import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   isLoggedIn: boolean = false
+  loggedInUser: User | undefined
 
   private usersList: User[]
   baseUrl: string
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private cartService: CartService) {
     this.baseUrl = 'http://localhost:3000'
     this.usersList = [
       new User(1, "mushthaq", "Qwerty123", "admin", "test@123.com"),
@@ -20,6 +23,17 @@ export class UserService {
       new User(4, "pcmushthaq", "Qwerty123", "user", "test2@123.com"),
       new User(5, "mohammed", "Qwerty123", "user", "test3@123.com"),
     ]
+    this.checkLoginStatus()
+  }
+
+  checkLoginStatus() {
+    var isLoggedInPreviously = localStorage.getItem('isLoggedIn')
+    if (isLoggedInPreviously != null && isLoggedInPreviously == 'true') {
+      this.isLoggedIn = true
+      var userId = localStorage.getItem('userId')!
+      this.loggedInUser = this.usersList.find(user => user.id.toString() == userId)
+      console.log("user has logged in previously")
+    }
   }
 
   getUsers(): User[] {
@@ -44,17 +58,33 @@ export class UserService {
     oldUser.role = role
   }
 
-  loginUser(email: string, password: string): User | undefined {
-    var user = this.usersList.find(user => user.email == email && user.password == password)
+  getUserByMailAndPassword(mail: string, password: string) {
+    return this.httpClient.get<User[]>(this.baseUrl + '/users' + '?email=' + mail + '&password=' + password).pipe(retry(1), catchError(this.httpError))
+  }
+
+  getUserById(id: number) {
+    return this.httpClient.get<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
+  }
+
+  loginUser(user: User): User | undefined {
+    // var user = this.usersList.find(user => user.email == email && user.password == password)
     if (user != undefined) {
       this.isLoggedIn = true
+      this.loggedInUser = user
+      localStorage.setItem("role", user.role)
+      localStorage.setItem("isLoggedIn", 'true')
+      localStorage.setItem("userId", user.id.toString())
+      this.cartService.generateCart(user.id)
     }
     return user
   }
 
   logoutUser() {
     this.isLoggedIn = false
+    this.loggedInUser = undefined
     localStorage.removeItem("role")
+    localStorage.removeItem('userId')
+    localStorage.setItem('isLoggedIn', 'false')
     window.location.href = '/home'
   }
 
