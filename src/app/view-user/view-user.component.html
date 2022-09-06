@@ -42,18 +42,20 @@
                 <th scope="col">Id</th>
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
-                <th scope="col">Password</th>
-                <th scope="col">Role</th>
-                <th scope="col">Action</th>
+                <!-- <th scope="col">Password</th>
+                <th scope="col">Role</th> -->
+                <th scope="col">View Details</th>
+                <th scope="col">Delete</th>
             </thead>
             <tbody id="products" class="text-white">
                 <tr *ngFor="let p of usersList" class="align-middle">
                     <td>{{p.id}}</td>
                     <td>{{p.username}}</td>
                     <td>{{p.email}}</td>
-                    <td>{{p.password}}
+                    <!-- <td>{{p.password}}
                     </td>
-                    <td>{{p.role}}</td>
+                    <td>{{p.role}}</td> -->
+                    <td><button class="btn btn-outline-success" (click)="viewUser(p.id)">View User</button></td>
                     <td><button class="btn btn-outline-danger" (click)="deleteUser(p.id)">Delete User</button></td>
                 </tr>
             </tbody>
