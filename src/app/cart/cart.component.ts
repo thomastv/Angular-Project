@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from '../cart.service';
 import { Cart } from '../models/cart';
 import { CartItem } from '../models/cartItem';
@@ -11,19 +12,23 @@ import { Product } from '../models/product';
 })
 export class CartComponent implements OnInit {
   myCartItems: CartItem[] = [];
+  cartChangeSubscription: Subscription
 
   constructor(private cartService: CartService) {
+    this.cartChangeSubscription = cartService.cartChangedEvent.subscribe(data => {
+      this.onCartChange()
+    })
+  }
 
+  onCartChange() {
+    var userId = localStorage.getItem('userId')!
+    this.cartService.getCartForUserHttp(parseInt(userId)).subscribe(cart => {
+      this.myCartItems = cart.cartItems
+    })
   }
 
   ngOnInit(): void {
-    var userId = localStorage.getItem('userId')!
-    this.cartService.getCartForUserHttp(parseInt(userId)).subscribe(cart => {
-      console.log("Got Cart for user", cart)
-      console.log("Cart Total", cart)
-      this.myCartItems = cart.cartItems
-
-    })
+    this.onCartChange()
   }
 
   get totalPrice() {
@@ -36,7 +41,8 @@ export class CartComponent implements OnInit {
 
   increaseItem(prod: CartItem) {
     var userId = localStorage.getItem('userId')!
-    this.cartService.addProductHttp(prod.product, parseInt(userId));
+    var sub = this.cartService.addProductHttp(prod.product, parseInt(userId));
+    sub.add(() => { console.log("FINALIZER INCREASE ITEM") })
   }
   decreseItem(prod: CartItem) {
     var userId = localStorage.getItem('userId')!

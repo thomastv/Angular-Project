@@ -19,11 +19,11 @@
       "name": "Dongle",
       "price": "500",
       "supplier_id": 1003,
-      "img_path": "assets/images/dongle.jpeg"
+      "img_path": "assets/images/mobile.jpg"
     },
     {
       "id": 104,
-      "name": "RJ-45",
+      "name": "Keyboard",
       "price": "1200",
       "supplier_id": 1004,
       "img_path": "assets/images/cable.jpg"
@@ -33,21 +33,14 @@
       "name": "Mouse",
       "price": "720",
       "supplier_id": 1005,
-      "img_path": "assets/images/mouse.jpg"
+      "img_path": "assets/images/usb.jpg"
     },
     {
-      "name": "Earbuds",
+      "name": "EarbudsUpdates",
       "price": "8999",
       "supplier_id": 1005,
-      "img_path": "assets/images/earpods.jpg",
+      "img_path": "assets/images/laptop.jpg",
       "id": 107
-    },
-    {
-      "id": 110,
-      "name": "Mobile",
-      "price": 40000,
-      "supplier_id": 1003,
-      "img_path": "assets/images/mobile.jpg"
     }
   ],
   "suppliers": [
@@ -98,6 +91,12 @@
       "location": "Hyderabad, Indiaa",
       "name": "Laptop",
       "logo_path": ""
+    },
+    {
+      "id": 12,
+      "location": "Hyderabad, Indiaa",
+      "name": "Laptop",
+      "logo_path": ""
     }
   ],
   "users": [
@@ -142,7 +141,7 @@
             "supplier_id": 1001,
             "img_path": "assets/images/laptop.jpg"
           },
-          "count": 1
+          "count": 6
         },
         {
           "product": {
@@ -152,17 +151,7 @@
             "supplier_id": 1002,
             "img_path": "assets/images/usb.jpg"
           },
-          "count": 3
-        },
-        {
-          "product": {
-            "id": 105,
-            "name": "Mouse",
-            "price": "720",
-            "supplier_id": 1005,
-            "img_path": "assets/images/usb.jpg"
-          },
-          "count": 1
+          "count": 4
         }
       ]
     },
@@ -190,6 +179,18 @@
           "count": 4
         }
       ]
+    },
+    {
+      "id": 7,
+      "cartItems": []
+    },
+    {
+      "id": 3,
+      "cartItems": []
+    },
+    {
+      "id": 4,
+      "cartItems": []
     }
   ]
 }
