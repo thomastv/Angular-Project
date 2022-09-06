@@ -48,42 +48,42 @@
       "id": 1001,
       "name": "Croma",
       "location": "Bangalore",
-      "logo_path": "assets/image/croma.jpg"
+      "logo_path": "assets/images/croma.png"
     },
     {
       "id": 1002,
       "name": "Sangeetha",
       "location": "Madras",
-      "logo_path": "assets/image/sangeetha.png"
+      "logo_path": "assets/images/sangeetha.png"
     },
     {
       "id": 1003,
       "name": "Pai Internantional",
       "location": "Hyderabad",
-      "logo_path": "assets/image/pai.jpg"
+      "logo_path": "assets/images/pai.jpg"
     },
     {
       "id": 1004,
       "name": "Reliance Digital",
       "location": "Mumbai",
-      "logo_path": "assets/image/rd.png"
+      "logo_path": "assets/images/rd.png"
     },
     {
       "id": 1005,
       "name": "Happy Digitals",
       "location": "Delhi",
-      "logo_path": "assets/image/happy.jpg"
+      "logo_path": "assets/images/happy.jpg"
     },
     {
       "id": 1006,
       "name": "Digi World",
       "location": "Nagpur",
-      "logo_path": "assets/image/digi.jpg"
+      "logo_path": "assets/images/digi.jpg"
     },
     {
       "name": "Girias",
       "location": "MangaloreUpdate",
-      "logo_path": "assets/image/girias.png",
+      "logo_path": "assets/images/girias.png",
       "id": 1007
     },
     {
