@@ -30,6 +30,10 @@ export class UserService {
     var observable = this.httpClient.get<User[]>(this.baseUrl + '/users').pipe(retry(1), catchError(this.httpError))
     return observable
   }
+  
+  getUserByIdHttp(id:number): Observable<User> {
+    return this.httpClient.get<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
+  }
 
   addUser(id: number, username: string, password: string, role: string, email: string) {
     var newUser = new User(id, username, password, role, email)

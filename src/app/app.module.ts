@@ -29,7 +29,8 @@ import { UpdateSupplierComponent } from './update-supplier/update-supplier.compo
 import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
 import { LifeCycleTestComponent } from './life-cycle-test/life-cycle-test.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CartComponent } from './cart/cart.component'
+import { CartComponent } from './cart/cart.component';
+import { UserDetailsComponent } from './user-details/user-details.component'
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CartComponent } from './cart/cart.component'
     CustomValidatorComponent,
     LifeCycleTestComponent,
     CartComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
