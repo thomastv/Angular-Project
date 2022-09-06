@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Cart } from './models/cart';
 import { CartItem } from './models/cartItem';
@@ -9,11 +9,16 @@ import { Product } from './models/product';
   providedIn: 'root'
 })
 export class CartService {
+  cartChangedEvent: EventEmitter<null> = new EventEmitter()
   myCart: Cart;
   baseUrl: string
+
+  notifyCartChange() {
+    this.cartChangedEvent.emit()
+  }
+
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000'
-    let u_Id = parseInt(localStorage.getItem('uid')!);
     this.myCart = new Cart(1, []);
   }
 
@@ -65,7 +70,7 @@ export class CartService {
 
 
   addProductHttp(prod: Product, userId: number) {
-    this.getCartForUserHttp(userId).subscribe(cart => {
+    return this.getCartForUserHttp(userId).subscribe(cart => {
       let flag = false;
 
       cart.cartItems.forEach((element) => {
@@ -79,7 +84,10 @@ export class CartService {
         cart.cartItems.push(newItem);
       }
 
-      this.updateCart(userId, cart).subscribe(data => { console.log("Cart Updated") })
+      return this.updateCart(userId, cart).subscribe(data => {
+        console.log("Cart Updated")
+        this.notifyCartChange()
+      })
     })
   }
 
@@ -93,7 +101,10 @@ export class CartService {
       }
       currentItem.count--;
 
-      this.updateCart(userId, cart).subscribe(data => { console.log("Cart Updated") })
+      this.updateCart(userId, cart).subscribe(data => {
+        console.log("Cart Updated")
+        this.notifyCartChange()
+      })
     })
   }
 

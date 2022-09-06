@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CartService } from '../cart.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddUserComponent implements OnInit {
   myForm: FormGroup
   submitted = false
 
-  constructor(private userService: UserService, fb: FormBuilder) {
+  constructor(private userService: UserService, fb: FormBuilder, private cartService: CartService) {
 
     this.myForm = fb.group({
       'username': ['', Validators.required],
@@ -38,6 +39,9 @@ export class AddUserComponent implements OnInit {
     else {
       this.userService.addUser(this.myForm.value.id, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
       document.getElementById('addUserModalButton')?.click()
+      this.cartService.createCart(this.myForm.value.id).subscribe(data => {
+        console.log("cart created")
+      })
     }
   }
 

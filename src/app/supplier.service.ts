@@ -38,7 +38,7 @@ export class SupplierService {
   addSupplierHttp(id: number, location: string, name: string) {
     var newSupplier = new Supplier(id, location, name, "")
     console.log("Adding")
-    return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers', newSupplier)
+    return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers/', newSupplier)
   }
 
   getSupplierByIdHttp(id: number): Observable<Supplier> {

@@ -91,6 +91,12 @@
       "location": "Hyderabad, Indiaa",
       "name": "Laptop",
       "logo_path": ""
+    },
+    {
+      "id": 12,
+      "location": "Hyderabad, Indiaa",
+      "name": "Laptop",
+      "logo_path": ""
     }
   ],
   "users": [
@@ -135,7 +141,7 @@
             "supplier_id": 1001,
             "img_path": "assets/images/laptop.jpg"
           },
-          "count": 3
+          "count": 6
         },
         {
           "product": {
@@ -145,7 +151,7 @@
             "supplier_id": 1002,
             "img_path": "assets/images/usb.jpg"
           },
-          "count": 9
+          "count": 4
         }
       ]
     },
@@ -173,6 +179,18 @@
           "count": 4
         }
       ]
+    },
+    {
+      "id": 7,
+      "cartItems": []
+    },
+    {
+      "id": 3,
+      "cartItems": []
+    },
+    {
+      "id": 4,
+      "cartItems": []
     }
   ]
 }
