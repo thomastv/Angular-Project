@@ -11,6 +11,8 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { CartComponent } from './cart/cart.component';
 import { SupplierViewComponent } from './supplier-view/supplier-view.component';
 import { SupplierDetailComponent } from './supplier-detail/supplier-detail.component';
+import { CartGuard } from './guards/cartguard';
+import { UserDetailsComponent } from './user-details/user-details.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminViewComponent, canActivate: [AdminGuard] },
@@ -21,7 +23,8 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'supplier/:id', component: SupplierDetailComponent, canActivate: [AdminGuard]},
   { path: 'updateProduct', component: UpdateProductComponent },
-  { path: 'myCart', component: CartComponent},
+{ path: 'myCart', component: CartComponent, canActivate: [CartGuard] },
+    { path: 'user/:id',component:UserDetailsComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
