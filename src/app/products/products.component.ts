@@ -37,6 +37,9 @@ export class ProductsComponent implements OnInit {
   deleteProduct(id: number) {
     if (confirm('Are you sure you want to delete this product?')) {
       this.productsService.deleteProduct(id)
+      this.productsService.deleteProductHttp(id).subscribe(data => {
+        console.log("Added", data)
+      })
     } else {
       console.log('Nope');
     }

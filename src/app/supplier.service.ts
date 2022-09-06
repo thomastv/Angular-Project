@@ -28,7 +28,9 @@ export class SupplierService {
     return this.httpClient.get<Supplier[]>(this.baseUrl + '/suppliers').pipe(retry(1), catchError(this.httpError))
   }
 
-
+  getSupplierByIdHttp(id: number): Observable<Supplier> {
+    return this.httpClient.get<Supplier>(this.baseUrl + '/suppliers/' + id).pipe(retry(1), catchError(this.httpError))
+  }
 
   addSupplier(id: number, location: string, name: string) {
     var newSupplier = new Supplier(id, location, name, "")
@@ -38,6 +40,7 @@ export class SupplierService {
   addSupplierHttp(id: number, location: string, name: string) {
     var newSupplier = new Supplier(id, location, name, "")
     console.log("Adding")
+
     return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers/', newSupplier)
   }
 
@@ -45,16 +48,21 @@ export class SupplierService {
     return this.httpClient.get<Supplier>(this.baseUrl + '/suppliers/' + id).pipe(retry(1), catchError(this.httpError))
   }
 
-
   updateSupplier(oldUser: Supplier, id: number, name: string, location: string) {
     oldUser.name = name
     oldUser.location = location
   }
 
+  updateSupplierHttp(oldUser: Supplier, id: number, name: string, location: string) {
+    oldUser.name = name
+    oldUser.location = location
+    return this.httpClient.put<Supplier>(this.baseUrl + '/suppliers/' + id , oldUser).pipe(retry(1), catchError(this.httpError))
+  }
   deleteSupplier(id: number) {
     var supplier = this.suppliersList.find(supplier => supplier.id == id)
-    var index = this.suppliersList.indexOf(supplier!)
-    this.suppliersList.splice(index, 1)
+    // var index = this.suppliersList.indexOf(supplier!)
+    // this.suppliersList.splice(index, 1)
+    return this.httpClient.delete<Supplier>(this.baseUrl + '/suppliers/' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   httpError(error: HttpErrorResponse) {

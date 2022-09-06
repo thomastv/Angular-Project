@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from '../user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class ViewUserComponent implements OnInit {
   usersList: User[] = []
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,private router:Router) {
     userService.getUsersHttp().subscribe(data => {
       this.usersList = data
     })
@@ -25,6 +26,14 @@ export class ViewUserComponent implements OnInit {
     } else {
       console.log('Nope');
     }
+
+  }
+  viewUser(id: number) {
+
+   
+      console.log("view user clicked", id)
+      // this.productsService.getProductByIdHttp(id).subscribe(data => { this.selectedProduct = data })
+      this.router.navigate(['user/' + id])
 
   }
 

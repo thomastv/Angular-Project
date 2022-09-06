@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Supplier } from '../models/supplier';
 import { SupplierService } from '../supplier.service';
 
@@ -12,7 +13,7 @@ export class SupplierViewComponent implements OnInit {
   suppliersList: Supplier[]
 
 
-  constructor(private supplierService: SupplierService) {
+  constructor(private supplierService: SupplierService, private router: Router) {
 
     this.suppliersList = []
     supplierService.getSuppliersHttp().subscribe(data => { this.suppliersList = data })
@@ -34,11 +35,18 @@ export class SupplierViewComponent implements OnInit {
 
   deleteSupplier(id: number) {
     if (confirm('Are you sure you want to delete this supplier?')) {
-      this.supplierService.deleteSupplier(id)
+      this.supplierService.deleteSupplier(id).subscribe(data => {
+        console.log("deleted" , data)
+      })
+      location.reload();
     } else {
       console.log('Nope');
     }
 
+  }
+  
+  viewSupplier(id : number){
+    this.router.navigate(['supplier/' + id])
   }
 
 }

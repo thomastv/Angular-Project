@@ -38,6 +38,9 @@ export class AddUserComponent implements OnInit {
     }
     else {
       this.userService.addUser(this.myForm.value.id, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
+      this.userService.addUserHttp(this.myForm.value.id, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email).subscribe(data => {
+        console.log("Added", data)
+      })
       document.getElementById('addUserModalButton')?.click()
       this.cartService.createCart(this.myForm.value.id).subscribe(data => {
         console.log("cart created")

@@ -44,11 +44,23 @@ export class UserService {
     var observable = this.httpClient.get<User[]>(this.baseUrl + '/users').pipe(retry(1), catchError(this.httpError))
     return observable
   }
+  
+  getUserByIdHttp(id:number): Observable<User> {
+    return this.httpClient.get<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
+  }
 
   addUser(id: number, username: string, password: string, role: string, email: string) {
     var newUser = new User(id, username, password, role, email)
     this.usersList.push(newUser)
   }
+
+  addUserHttp(id: number, username: string, password: string, role: string, email: string){
+    var newUser = new User(id, username, password, role, email);
+    return this.httpClient.post<User>(this.baseUrl + '/users/', newUser).pipe(retry(1), catchError(this.httpError))
+  }
+
+
+
 
   updateUser(oldUser: User, id: number, username: string, email: string, password: string, role: string) {
     oldUser.id = id
@@ -58,6 +70,13 @@ export class UserService {
     oldUser.role = role
   }
 
+  updateUserHttp(oldUser: User, id: number, username: string, email: string, password: string, role: string){
+    oldUser.username = username
+    oldUser.email = email
+    oldUser.password = password
+    oldUser.role = role
+    return this.httpClient.put<User>(this.baseUrl + '/users/' + id, oldUser).pipe(retry(1), catchError(this.httpError))
+  }
   getUserByMailAndPassword(mail: string, password: string) {
     return this.httpClient.get<User[]>(this.baseUrl + '/users' + '?email=' + mail + '&password=' + password).pipe(retry(1), catchError(this.httpError))
   }
@@ -92,6 +111,10 @@ export class UserService {
     var user = this.usersList.find(user => user.id == id)
     var index = this.usersList.indexOf(user!)
     this.usersList.splice(index, 1)
+  }
+
+  deleteUserHttp(id:number){
+    return this.httpClient.delete<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   httpError(error: HttpErrorResponse) {

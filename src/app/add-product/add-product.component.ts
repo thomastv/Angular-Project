@@ -38,6 +38,9 @@ export class AddProductComponent implements OnInit {
     }
     else {
       this.productsService.addProduct(this.myForm.value.id, this.myForm.value.name, this.myForm.value.price, this.myForm.value.supplier_id, this.myForm.value.image_path)
+      this.productsService.addProductHttp(this.myForm.value.id, this.myForm.value.name, this.myForm.value.price, this.myForm.value.supplier_id, this.myForm.value.image_path).subscribe(data => {
+        console.log("Added", data)
+      })
       document.getElementById('addProductModalButton')?.click()
     }
   }

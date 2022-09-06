@@ -84,10 +84,12 @@ export class CartService {
         cart.cartItems.push(newItem);
       }
 
+
       return this.updateCart(userId, cart).subscribe(data => {
         console.log("Cart Updated")
         this.notifyCartChange()
       })
+
     })
   }
 
