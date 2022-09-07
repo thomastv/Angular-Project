@@ -17,7 +17,7 @@ export class AddUserComponent implements OnInit {
 
     this.myForm = fb.group({
       'username': ['', Validators.required],
-      'id': [0, Validators.required],
+      // 'id': [0, Validators.required],
       'password': ['', Validators.required],
       'email': ['', Validators.required],
       'role': ['', Validators.required],
@@ -37,14 +37,25 @@ export class AddUserComponent implements OnInit {
       console.log("Invalid")
     }
     else {
-      this.userService.addUser(this.myForm.value.id, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
-      this.userService.addUserHttp(this.myForm.value.id, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email).subscribe(data => {
+      let maxId=0;
+      this.userService.getUsersHttp().subscribe(data => {
+        
+        data.forEach((element)=>{
+          if(element.id>maxId)
+            maxId = element.id
+        })
+        maxId +=1;
+        this.userService.addUser(maxId, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
+        this.userService.addUserHttp(maxId, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email).subscribe(data => {
         console.log("Added", data)
+        })
+        document.getElementById('addUserModalButton')?.click()
+        this.cartService.createCart(this.myForm.value.id).subscribe(data => {
+            console.log("cart created")
+        })
+        location.reload();
       })
-      document.getElementById('addUserModalButton')?.click()
-      this.cartService.createCart(this.myForm.value.id).subscribe(data => {
-        console.log("cart created")
-      })
+      
     }
   }
 

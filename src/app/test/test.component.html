@@ -1,0 +1,80 @@
+<div>My Custom Directive</div>
+
+<div>
+    <input type="radio" name="colors" (click)= "color='lightgreen'">Green
+    <input type="radio" name="colors" (click)= "color='yellow'">Yellow
+    <input type="radio" name="colors" (click)= "color='cyan'">Cyan
+    <input type="radio" name="colors" (click)= "color=''">Default
+</div>
+<p [appCustomDirective]="color">Highlight Me</p>
+<div>
+    <input type="radio" name="opac" (click)= "opac='.001'">0
+    <input type="radio" name="opac" (click)= "opac='.1'">10
+    <input type="radio" name="opac" (click)= "opac='.2'">20
+    <input type="radio" name="opac" (click)= "opac='.5'">50
+    <input type="radio" name="opac" (click)= "opac='1'">100
+</div>
+<img draggable="true" [appOpacityDirective]="opac" src ="assets\images\ceo.jpg">
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button>
+  <mat-stepper [linear]="isLinear" #stepper class="text-dark">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" (ngSubmit)="saveFirst(firstFormGroup)">
+        <ng-template matStepLabel>Fill out cart ID</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>ID</mat-label>
+          <input matInput placeholder="1" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Add Products">
+      <form class= "basic-container" [formGroup]="productFormGroup" (ngSubmit)="saveSecond(productFormGroup.value)">
+        <div formArrayName="products">
+            <div class="row" *ngFor="let product of products().controls;let i=index" [formGroupName]="i">
+                   <mat-form-field appearance="fill">
+                    <mat-label>Products</mat-label>
+                    <input matInput formControlName="pName" placeholder="Mobile"
+                            required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Price</mat-label>
+                        <input matInput formControlName="pPrice" placeholder="10000"
+                            required>
+                    </mat-form-field> 
+                    
+            </div>
+            <button class="btn btn-primary" (click)="addMoreProd()">Add Product</button>
+        </div>
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Products</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Mobile"
+                 required>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="10000"
+                   required>
+          </mat-form-field> -->
+          
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext (click)="finalSubmit()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
