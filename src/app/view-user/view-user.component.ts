@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { User } from '../models/user';
 import { UserService } from '../user.service';
 
@@ -10,19 +11,29 @@ import { UserService } from '../user.service';
 })
 export class ViewUserComponent implements OnInit {
   usersList: User[] = []
+  userChangeSubscribe:Subscription
   constructor(private userService: UserService,private router:Router) {
-    userService.getUsersHttp().subscribe(data => {
-      this.usersList = data
+    
+    this.userChangeSubscribe = userService.userChangeEvent.subscribe(data =>{
+      this.onUserChange();
     })
   }
 
+  onUserChange(){
+    this.userService.getUsersHttp().subscribe(data => {
+      this.usersList = data
+      console.log("Event called ")
+    })
+  }
   ngOnInit(): void {
+    this.onUserChange();
   }
 
   deleteUser(id: number) {
 
     if (confirm('Are you sure you want to delete this user?')) {
-      this.userService.deleteUser(id)
+      this.userService.deleteUserHttp(id)
+      console.log("Delete called")
     } else {
       console.log('Nope');
     }

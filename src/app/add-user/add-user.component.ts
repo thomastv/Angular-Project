@@ -46,14 +46,12 @@ export class AddUserComponent implements OnInit {
         })
         maxId +=1;
         this.userService.addUser(maxId, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
-        this.userService.addUserHttp(maxId, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email).subscribe(data => {
-        console.log("Added", data)
-        })
+        this.userService.addUserHttp(maxId, this.myForm.value.username, this.myForm.value.password, this.myForm.value.role, this.myForm.value.email)
         document.getElementById('addUserModalButton')?.click()
         this.cartService.createCart(this.myForm.value.id).subscribe(data => {
             console.log("cart created")
         })
-        location.reload();
+        //location.reload();
       })
       
     }

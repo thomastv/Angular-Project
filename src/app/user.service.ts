@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { catchError, lastValueFrom, Observable, retry, throwError } from 'rxjs';
 import { CartService } from './cart.service';
 import { User } from './models/user';
@@ -9,12 +9,16 @@ import { User } from './models/user';
 })
 
 export class UserService {
+  userChangeEvent:EventEmitter<null> = new EventEmitter();
   isLoggedIn: boolean = false
   loggedInUser: User | undefined
 
   private usersList: User[]
   baseUrl: string
 
+  notifyUserChange(){
+    this.userChangeEvent.emit();
+  }
   constructor(private httpClient: HttpClient, private cartService: CartService) {
     this.baseUrl = 'http://localhost:3000'
     this.usersList = [
@@ -52,11 +56,15 @@ export class UserService {
   addUser(id: number, username: string, password: string, role: string, email: string) {
     var newUser = new User(id, username, password, role, email)
     this.usersList.push(newUser)
+    this.notifyUserChange();
   }
 
   addUserHttp(id: number, username: string, password: string, role: string, email: string){
     var newUser = new User(id, username, password, role, email);
-    return this.httpClient.post<User>(this.baseUrl + '/users/', newUser).pipe(retry(1), catchError(this.httpError))
+    this.notifyUserChange();
+    return this.httpClient.post<User>(this.baseUrl + '/users/', newUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+      this.notifyUserChange();
+    })
   }
 
 
@@ -75,7 +83,9 @@ export class UserService {
     oldUser.email = email
     oldUser.password = password
     oldUser.role = role
-    return this.httpClient.put<User>(this.baseUrl + '/users/' + id, oldUser).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.put<User>(this.baseUrl + '/users/' + id, oldUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+      this.notifyUserChange();
+    })
   }
   getUserByMailAndPassword(mail: string, password: string) {
     return this.httpClient.get<User[]>(this.baseUrl + '/users' + '?email=' + mail + '&password=' + password).pipe(retry(1), catchError(this.httpError))
@@ -114,7 +124,9 @@ export class UserService {
   }
 
   deleteUserHttp(id:number){
-    return this.httpClient.delete<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.delete<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+      this.notifyUserChange();
+    })
   }
 
   httpError(error: HttpErrorResponse) {

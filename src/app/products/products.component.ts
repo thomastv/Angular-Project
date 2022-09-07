@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CartService } from '../cart.service';
 import { Product } from '../models/product';
 import { ProductService } from '../product.service';
@@ -16,12 +17,17 @@ export class ProductsComponent implements OnInit {
   productsArray: Product[] = []
   selectedProduct: Product | undefined
   selectedProductSupplierId: number
-
+  productsChangeSubscribe:Subscription;
   constructor(private productsService: ProductService, private cartService: CartService, private router: Router) {
     this.productsService.getProductsHttp().subscribe(data => { this.productsArray = data })
     this.selectedProductSupplierId = 0
+    this.productsChangeSubscribe = productsService.productChangeEvent.subscribe(data =>{
+      this.onProductsChanged();
+    })
   }
-
+  onProductsChanged(){
+    this.productsService.getProductsHttp().subscribe(data => { this.productsArray = data })
+  }
   ngOnInit(): void {
 
   }
@@ -37,9 +43,7 @@ export class ProductsComponent implements OnInit {
   deleteProduct(id: number) {
     if (confirm('Are you sure you want to delete this product?')) {
       this.productsService.deleteProduct(id)
-      this.productsService.deleteProductHttp(id).subscribe(data => {
-        console.log("Added", data)
-      })
+      this.productsService.deleteProductHttp(id)
     } else {
       console.log('Nope');
     }

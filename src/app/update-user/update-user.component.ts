@@ -13,7 +13,7 @@ export class UpdateUserComponent implements OnInit {
   myForm: FormGroup
   submitted = false
   selectedUser: User | undefined
-
+  
 
   usersList: User[]
 
@@ -22,11 +22,11 @@ export class UpdateUserComponent implements OnInit {
     this.usersList = [];
     this.userService.getUsersHttp().subscribe(data => {
       this.usersList = data
-      this.selectedUser = this.usersList[0]
+      this.selectedUser = this.usersList[0]!
     })
     this.myForm = fb.group({
       'username': ['', Validators.required],
-      'id': [0, Validators.required],
+      // 'id': [0, Validators.required],
       'email': ['', Validators.required],
       'password': ['', Validators.required],
       'role': ['', Validators.required],
@@ -44,7 +44,7 @@ export class UpdateUserComponent implements OnInit {
     var newId = parseInt(event.target.value.split(':')[1].trim())
     console.log(newId)
     this.selectedUser = this.usersList.find(product => product.id == newId)!
-    this.myForm.get('id')?.setValue(this.selectedUser.id)
+    // this.myForm.get('id')?.setValue(this.selectedUser.id)
     this.myForm.get('username')?.setValue(this.selectedUser.username)
     this.myForm.get('password')?.setValue(this.selectedUser.password)
     this.myForm.get('email')?.setValue(this.selectedUser.email)
@@ -52,10 +52,8 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser() {
-    this.userService.updateUser(this.selectedUser!, this.myForm.value.id, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role);
-    this.userService.updateUserHttp(this.selectedUser!, this.myForm.value.id, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role).subscribe(data => {
-      console.log("Updated", data)
-    });;
+    this.userService.updateUser(this.selectedUser!, 1, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role);
+    this.userService.updateUserHttp(this.selectedUser!, 1, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role)
     document.getElementById('updateUserModalButton')?.click()
   }
 
