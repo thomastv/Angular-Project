@@ -13,8 +13,6 @@ export class UpdateSupplierComponent implements OnInit {
   myForm: FormGroup
   submitted = false
   selectedSupplier: Supplier | undefined
-
-
   suppliersList: Supplier[] = []
 
 
@@ -51,7 +49,7 @@ export class UpdateSupplierComponent implements OnInit {
     // document.getElementById('updateSupplierModalButton')?.click()
 
     this.supplierService.updateSupplierHttp(this.selectedSupplier!, this.myForm.value.id, this.myForm.value.name, this.myForm.value.location).subscribe(data => {
-      console.log("updated" , data)
+      console.log("updated", data)
     });
     document.getElementById('updateSupplierModalButton')?.click()
   }

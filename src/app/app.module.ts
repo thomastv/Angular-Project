@@ -34,6 +34,14 @@ import { SupplierDetailComponent } from './supplier-detail/supplier-detail.compo
 import { AttributeDirectiveComponent } from './attribute-directive/attribute-directive.component'
 import { UserDetailsComponent } from './user-details/user-details.component'
 import { CartGuard } from './guards/cartguard';
+import { MaterialTestComponent } from './material-test/material-test.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
+
+import { CustomDirective } from './custom.directive';
+import { OpacityDirective } from './opacity.directive';
 
 @NgModule({
   declarations: [
@@ -63,6 +71,10 @@ import { CartGuard } from './guards/cartguard';
     SupplierDetailComponent,
     AttributeDirectiveComponent,
     UserDetailsComponent,
+    MaterialTestComponent,
+    CustomDirectiveComponent,
+    CustomDirective,
+    OpacityDirective,
   ],
   imports: [
     BrowserModule,
@@ -71,9 +83,12 @@ import { CartGuard } from './guards/cartguard';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
-    AdminGuard,CartGuard
+    AdminGuard, CartGuard
   ],
   bootstrap: [AppComponent]
 })

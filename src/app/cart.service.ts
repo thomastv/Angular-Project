@@ -41,7 +41,7 @@ export class CartService {
 
   createCart(userId: number) {
     var newCart = new Cart(userId, [])
-    return this.httpClient.post<Cart>(this.baseUrl + '/carts/', newCart).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.post<Cart>(this.baseUrl + '/carts/', JSON.stringify(newCart)).pipe(retry(1), catchError(this.httpError))
   }
 
   updateCart(userId: number, newCart: Cart) {

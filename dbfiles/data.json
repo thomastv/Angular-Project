@@ -41,6 +41,20 @@
       "supplier_id": 1005,
       "img_path": "assets/images/laptop.jpg",
       "id": 107
+    },
+    {
+      "id": 108,
+      "name": "LaptopNew",
+      "price": 5000,
+      "supplier_id": 15,
+      "img_path": "assets/images/usb.jpg"
+    },
+    {
+      "id": 109,
+      "name": "Laptop",
+      "price": 2,
+      "supplier_id": 123,
+      "img_path": "assets/images/usb.jpg"
     }
   ],
   "suppliers": [
@@ -54,7 +68,7 @@
       "id": 1002,
       "name": "Sangeetha",
       "location": "Madras",
-      "logo_path": "assets/images/sangeetha.png"
+      "logo_path": "assets/images/sangeetha.jpg"
     },
     {
       "id": 1003,
@@ -88,12 +102,6 @@
     },
     {
       "id": 123,
-      "location": "Hyderabad, Indiaa",
-      "name": "Laptop",
-      "logo_path": ""
-    },
-    {
-      "id": 12,
       "location": "Hyderabad, Indiaa",
       "name": "Laptop",
       "logo_path": ""
@@ -141,7 +149,7 @@
             "supplier_id": 1001,
             "img_path": "assets/images/laptop.jpg"
           },
-          "count": 6
+          "count": 15
         },
         {
           "product": {
@@ -151,7 +159,17 @@
             "supplier_id": 1002,
             "img_path": "assets/images/usb.jpg"
           },
-          "count": 4
+          "count": 20
+        },
+        {
+          "product": {
+            "id": 104,
+            "name": "Keyboard",
+            "price": "1200",
+            "supplier_id": 1004,
+            "img_path": "assets/images/cable.jpg"
+          },
+          "count": 10
         }
       ]
     },
@@ -191,6 +209,102 @@
     {
       "id": 4,
       "cartItems": []
+    }
+  ],
+  "cartTemps": [
+    {
+      "id": 1,
+      "userId": 1,
+      "amount": 200,
+      "products": [
+        {
+          "id": 101,
+          "name": "Laptop",
+          "price": "87000",
+          "suppliers": [
+            {
+              "id": 1001,
+              "name": "Croma",
+              "location": "Bangalore",
+              "logo_path": "assets/images/croma.png"
+            },
+            {
+              "id": 1003,
+              "name": "Pai Internantional",
+              "location": "Hyderabad",
+              "logo_path": "assets/images/pai.jpg"
+            }
+          ],
+          "img_path": "assets/images/laptop.jpg"
+        },
+        {
+          "id": 102,
+          "name": "USB",
+          "price": 1000,
+          "suppliers": [
+            {
+              "id": 1002,
+              "name": "Sangeetha",
+              "location": "Madras",
+              "logo_path": "assets/images/sangeetha.jpg"
+            },
+            {
+              "id": 1003,
+              "name": "Pai Internantional",
+              "location": "Hyderabad",
+              "logo_path": "assets/images/pai.png"
+            }
+          ],
+          "img_path": "assets/images/usb.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "amount": 400,
+      "products": [
+        {
+          "id": 101,
+          "name": "Laptop",
+          "price": "87000",
+          "suppliers": [
+            {
+              "id": 1001,
+              "name": "Croma",
+              "location": "Bangalore",
+              "logo_path": "assets/images/croma.png"
+            },
+            {
+              "id": 1002,
+              "name": "Sangeetha",
+              "location": "Madras",
+              "logo_path": "assets/images/sangeetha.jpg"
+            }
+          ],
+          "img_path": "assets/images/laptop.jpg"
+        },
+        {
+          "id": 103,
+          "name": "Dongle",
+          "price": "500",
+          "suppliers": [
+            {
+              "id": 1001,
+              "name": "Croma",
+              "location": "Bangalore",
+              "logo_path": "assets/images/croma.png"
+            },
+            {
+              "id": 1003,
+              "name": "Pai Internantional",
+              "location": "Hyderabad",
+              "logo_path": "assets/images/pai.png"
+            }
+          ],
+          "img_path": "assets/images/mobile.jpg"
+        }
+      ]
     }
   ]
 }
