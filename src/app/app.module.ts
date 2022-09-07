@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatSliderModule } from '@angular/material/slider';
+import {MatStepperModule} from '@angular/material/stepper'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BasicComponent } from './basic/basic.component';
@@ -34,6 +39,9 @@ import { SupplierDetailComponent } from './supplier-detail/supplier-detail.compo
 import { AttributeDirectiveComponent } from './attribute-directive/attribute-directive.component'
 import { UserDetailsComponent } from './user-details/user-details.component'
 import { CartGuard } from './guards/cartguard';
+import { TestComponent } from './test/test.component';
+import { CustomDirectiveDirective } from './custom-directive.directive';
+import { OpacityDirectiveDirective } from './opacity-directive.directive';
 
 @NgModule({
   declarations: [
@@ -63,6 +71,9 @@ import { CartGuard } from './guards/cartguard';
     SupplierDetailComponent,
     AttributeDirectiveComponent,
     UserDetailsComponent,
+    TestComponent,
+    CustomDirectiveDirective,
+    OpacityDirectiveDirective,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +82,13 @@ import { CartGuard } from './guards/cartguard';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatSliderModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
+
   ],
   providers: [
     AdminGuard,CartGuard
