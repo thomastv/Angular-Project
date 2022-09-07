@@ -92,12 +92,6 @@
       "location": "MangaloreUpdate",
       "logo_path": "assets/images/girias.png",
       "id": 1007
-    },
-    {
-      "id": 12,
-      "location": "Hyderabad, Indiaa",
-      "name": "Laptop",
-      "logo_path": ""
     }
   ],
   "users": [
@@ -111,14 +105,14 @@
     {
       "id": 2,
       "username": "James",
-      "email": "james@tismo.com",
+      "email": "james@gmail.com",
       "password": "john123",
       "role": "user"
     },
     {
       "id": 3,
       "username": "Jerry",
-      "email": "jerry@tismo.com",
+      "email": "jerry@yahoo.com",
       "password": "jerry123",
       "role": "user"
     },
@@ -126,7 +120,7 @@
       "id": 4,
       "username": "Manager",
       "email": "manager@tismo.com",
-      "password": "manager123",
+      "password": "manager1234",
       "role": "admin"
     },
     {
@@ -139,9 +133,16 @@
     {
       "id": 6,
       "username": "Sam",
-      "email": "sam@gmail.com",
+      "email": "sam@yahoo.com",
       "password": "sam123",
       "role": "user"
+    },
+    {
+      "id": 7,
+      "username": "Jijo",
+      "email": "jijo@tismo.com",
+      "password": "jijo123",
+      "role": "admin"
     }
   ],
   "carts": [
@@ -226,6 +227,10 @@
     {
       "cartItems": [],
       "id": 12
+    },
+    {
+      "cartItems": [],
+      "id": 13
     }
   ],
   "cartTemp": [
