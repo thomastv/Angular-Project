@@ -26,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
     })
     this.myForm = fb.group({
       'username': ['', Validators.required],
-      // 'id': [0, Validators.required],
+       'id': [0, Validators.required],
       'email': ['', Validators.required],
       'password': ['', Validators.required],
       'role': ['', Validators.required],
@@ -52,8 +52,8 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser() {
-    this.userService.updateUser(this.selectedUser!, 1, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role);
-    this.userService.updateUserHttp(this.selectedUser!, 1, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role)
+    this.userService.updateUser(this.selectedUser!, this.selectedUser?.id!, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role);
+    this.userService.updateUserHttp(this.selectedUser!, this.myForm.value.username, this.myForm.value.email, this.myForm.value.password, this.myForm.value.role)
     document.getElementById('updateUserModalButton')?.click()
   }
 

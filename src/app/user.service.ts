@@ -78,12 +78,14 @@ export class UserService {
     oldUser.role = role
   }
 
-  updateUserHttp(oldUser: User, id: number, username: string, email: string, password: string, role: string){
+  updateUserHttp(oldUser: User, username: string, email: string, password: string, role: string){
     oldUser.username = username
+    //let uid = oldUser.id;
+    console.log(oldUser.id)
     oldUser.email = email
     oldUser.password = password
     oldUser.role = role
-    return this.httpClient.put<User>(this.baseUrl + '/users/' + id, oldUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+    return this.httpClient.put<User>(this.baseUrl + '/users/' + oldUser.id, oldUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
       this.notifyUserChange();
     })
   }
