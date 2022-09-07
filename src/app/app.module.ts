@@ -39,9 +39,7 @@ import { SupplierDetailComponent } from './supplier-detail/supplier-detail.compo
 import { AttributeDirectiveComponent } from './attribute-directive/attribute-directive.component'
 import { UserDetailsComponent } from './user-details/user-details.component'
 import { CartGuard } from './guards/cartguard';
-import { TestComponent } from './test/test.component';
-import { CustomDirectiveDirective } from './custom-directive.directive';
-import { OpacityDirectiveDirective } from './opacity-directive.directive';
+
 
 @NgModule({
   declarations: [
@@ -71,9 +69,7 @@ import { OpacityDirectiveDirective } from './opacity-directive.directive';
     SupplierDetailComponent,
     AttributeDirectiveComponent,
     UserDetailsComponent,
-    TestComponent,
-    CustomDirectiveDirective,
-    OpacityDirectiveDirective,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
