@@ -44,6 +44,9 @@ import { CustomDirectiveComponent } from './custom-directive/custom-directive.co
 
 import { CustomDirective } from './custom.directive';
 import { OpacityDirective } from './opacity.directive';
+import { UserDashborardComponent } from './user-dashborard/user-dashborard.component';
+import { PipeExampleComponent } from './pipe-example/pipe-example.component';
+import { SwitchCasePipe } from './switch-case.pipe';
 
 
 @NgModule({
@@ -81,6 +84,9 @@ import { OpacityDirective } from './opacity.directive';
     OpacityDirective,
 
     ContentComponent,
+      UserDashborardComponent,
+      PipeExampleComponent,
+      SwitchCasePipe,
 
   ],
   imports: [

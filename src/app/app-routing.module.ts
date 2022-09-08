@@ -13,6 +13,7 @@ import { SupplierViewComponent } from './supplier-view/supplier-view.component';
 import { SupplierDetailComponent } from './supplier-detail/supplier-detail.component';
 import { CartGuard } from './guards/cartguard';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserDashborardComponent } from './user-dashborard/user-dashborard.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminViewComponent, canActivate: [AdminGuard] },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'updateProduct', component: UpdateProductComponent },
   { path: 'myCart', component: CartComponent, canActivate: [CartGuard] },
   { path: 'user/:id', component: UserDetailsComponent },
+  {path: 'myDashboard', component:UserDashborardComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
