@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatStepperModule} from '@angular/material/stepper'
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatStepperModule } from '@angular/material/stepper'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,9 +40,6 @@ import { AttributeDirectiveComponent } from './attribute-directive/attribute-dir
 import { UserDetailsComponent } from './user-details/user-details.component'
 import { CartGuard } from './guards/cartguard';
 import { MaterialTestComponent } from './material-test/material-test.component';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { CustomDirectiveComponent } from './custom-directive/custom-directive.component';
 
 import { CustomDirective } from './custom.directive';

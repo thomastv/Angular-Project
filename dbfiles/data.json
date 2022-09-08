@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 101,
-      "name": "Laptop",
+      "name": "Laptopp",
       "price": 85000,
       "supplier_id": 1001,
       "img_path": "assets/images/laptop.jpg"
@@ -41,22 +41,6 @@
       "supplier_id": 1005,
       "img_path": "assets/images/earpods.jpg",
       "id": 107
-    },
-    {
-      "id": 108,
-
-      "name": "LaptopNew",
-      "price": 5000,
-      "supplier_id": 15,
-      "img_path": "assets/images/usb.jpg"
-    },
-    {
-      "id": 109,
-      "name": "Laptop",
-      "price": 2,
-      "supplier_id": 123,
-      "img_path": "assets/images/usb.jpg"
-
     }
   ],
   "suppliers": [
@@ -101,14 +85,12 @@
       "location": "MangaloreUpdate",
       "logo_path": "assets/images/girias.png",
       "id": 1007
-
     },
     {
       "id": 123,
       "location": "Hyderabad, Indiaa",
       "name": "Laptop",
       "logo_path": ""
-
     }
   ],
   "users": [
@@ -121,7 +103,7 @@
     },
     {
       "id": 2,
-      "username": "James",
+      "username": "JamesEd",
       "email": "james@gmail.com",
       "password": "john123",
       "role": "user"
@@ -153,13 +135,6 @@
       "email": "sam@yahoo.com",
       "password": "sam123",
       "role": "user"
-    },
-    {
-      "id": 7,
-      "username": "Jijo",
-      "email": "jijo@tismo.com",
-      "password": "jijo123",
-      "role": "admin"
     }
   ],
   "carts": [
@@ -174,9 +149,7 @@
             "supplier_id": 1001,
             "img_path": "assets/images/laptop.jpg"
           },
-
           "count": 15
-
         },
         {
           "product": {

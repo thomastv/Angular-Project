@@ -31,9 +31,7 @@ export class AddProductComponent implements OnInit {
   }
 
   onChangeType(event: any) {
-    console.log(event.target.value)
-    var newId = parseInt(event.target.value.split(':')[1].trim())
-    console.log(newId)
+    var newId = parseInt(event.target.value)
     this.selectedSupplier = this.suppliersList.find(product => product.id == newId)!
     this.myForm.get('supplier_id')?.setValue(this.selectedSupplier.id)
   }
@@ -65,9 +63,7 @@ export class AddProductComponent implements OnInit {
         })
         maxId++
         this.productsService.addProduct(maxId, this.myForm.value.name, this.myForm.value.price, this.myForm.value.supplier_id, this.myForm.value.image_path)
-        this.productsService.addProductHttp(maxId, this.myForm.value.name, this.myForm.value.price, this.myForm.value.supplier_id, this.myForm.value.image_path).subscribe(data => {
-          console.log("Added", data)
-        })
+        this.productsService.addProductHttp(maxId, this.myForm.value.name, this.myForm.value.price, this.myForm.value.supplier_id, this.myForm.value.image_path)
         document.getElementById('addProductModalButton')?.click()
 
       })

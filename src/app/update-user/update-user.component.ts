@@ -13,20 +13,21 @@ export class UpdateUserComponent implements OnInit {
   myForm: FormGroup
   submitted = false
   selectedUser: User | undefined
-  
+
 
   usersList: User[]
 
 
   constructor(private userService: UserService, fb: FormBuilder) {
     this.usersList = [];
+    this.userService.userChangeEvent.subscribe(data => { this.onUserChange() })
     this.userService.getUsersHttp().subscribe(data => {
       this.usersList = data
       this.selectedUser = this.usersList[0]!
     })
     this.myForm = fb.group({
       'username': ['', Validators.required],
-       'id': [0, Validators.required],
+      'id': [0, Validators.required],
       'email': ['', Validators.required],
       'password': ['', Validators.required],
       'role': ['', Validators.required],
@@ -37,6 +38,12 @@ export class UpdateUserComponent implements OnInit {
   get f() { return this.myForm.controls }
 
   ngOnInit(): void {
+  }
+  onUserChange() {
+    this.userService.getUsersHttp().subscribe(data => {
+      this.usersList = data
+      console.log("Event called ")
+    })
   }
 
   onChangeType(event: any) {

@@ -18,7 +18,7 @@ export class UpdateProductComponent implements OnInit {
 
 
   constructor(private productService: ProductService, fb: FormBuilder) {
-    this.productService.getProductsHttp().subscribe(data => { this.productsArray = data });
+    productService.productChangeEvent.subscribe(data => { this.onProductsChanged() })
     this.myForm = fb.group({
       'name': ['', Validators.required],
       'id': [0, Validators.required],
@@ -31,6 +31,11 @@ export class UpdateProductComponent implements OnInit {
   get f() { return this.myForm.controls }
 
   ngOnInit(): void {
+    this.productService.getProductsHttp().subscribe(data => { this.productsArray = data });
+  }
+
+  onProductsChanged() {
+    this.productService.getProductsHttp().subscribe(data => { this.productsArray = data })
   }
 
   onChangeType(event: any) {

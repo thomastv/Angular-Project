@@ -21,10 +21,10 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'products/product', component: ProductDetailComponent },
   { path: 'product/:id', component: ProductDetailComponent },
-  { path: 'supplier/:id', component: SupplierDetailComponent, canActivate: [AdminGuard]},
+  { path: 'supplier/:id', component: SupplierDetailComponent, canActivate: [AdminGuard] },
   { path: 'updateProduct', component: UpdateProductComponent },
-{ path: 'myCart', component: CartComponent, canActivate: [CartGuard] },
-    { path: 'user/:id',component:UserDetailsComponent},
+  { path: 'myCart', component: CartComponent, canActivate: [CartGuard] },
+  { path: 'user/:id', component: UserDetailsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
