@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 101,
-      "name": "Laptopp",
+      "name": "Laptop",
       "price": 85000,
       "supplier_id": 1001,
       "img_path": "assets/images/laptop.jpg"

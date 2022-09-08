@@ -44,6 +44,8 @@ import { CustomDirectiveComponent } from './custom-directive/custom-directive.co
 
 import { CustomDirective } from './custom.directive';
 import { OpacityDirective } from './opacity.directive';
+import { UserDashborardComponent } from './user-dashborard/user-dashborard.component';
+
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { OpacityDirective } from './opacity.directive';
     OpacityDirective,
 
     ContentComponent,
+      UserDashborardComponent,
+      
 
   ],
   imports: [
