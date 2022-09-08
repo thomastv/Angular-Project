@@ -88,8 +88,8 @@
     },
     {
       "id": 123,
-      "location": "Hyderabad, Indiaa",
-      "name": "Laptop",
+      "location": "Hyderabad, India",
+      "name": "Laptop World",
       "logo_path": ""
     }
   ],
@@ -103,7 +103,7 @@
     },
     {
       "id": 2,
-      "username": "JamesEd",
+      "username": "James",
       "email": "james@gmail.com",
       "password": "john123",
       "role": "user"
@@ -149,7 +149,7 @@
             "supplier_id": 1001,
             "img_path": "assets/images/laptop.jpg"
           },
-          "count": 15
+          "count": 2
         },
         {
           "product": {
@@ -159,7 +159,7 @@
             "supplier_id": 1002,
             "img_path": "assets/images/usb.jpg"
           },
-          "count": 20
+          "count": 8
         },
         {
           "product": {
@@ -169,7 +169,7 @@
             "supplier_id": 1004,
             "img_path": "assets/images/cable.jpg"
           },
-          "count": 10
+          "count": 6
         }
       ]
     },
