@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatSliderModule } from '@angular/material/slider';
+import {MatStepperModule} from '@angular/material/stepper'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BasicComponent } from './basic/basic.component';
@@ -43,6 +48,7 @@ import { CustomDirectiveComponent } from './custom-directive/custom-directive.co
 import { CustomDirective } from './custom.directive';
 import { OpacityDirective } from './opacity.directive';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,10 +77,14 @@ import { OpacityDirective } from './opacity.directive';
     SupplierDetailComponent,
     AttributeDirectiveComponent,
     UserDetailsComponent,
+
     MaterialTestComponent,
     CustomDirectiveComponent,
     CustomDirective,
     OpacityDirective,
+
+    ContentComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -83,9 +93,12 @@ import { OpacityDirective } from './opacity.directive';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatSliderModule,
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [
     AdminGuard, CartGuard

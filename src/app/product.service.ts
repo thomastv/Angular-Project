@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Product } from './models/product';
 
@@ -8,6 +8,7 @@ import { Product } from './models/product';
 })
 export class ProductService {
 
+  productChangeEvent:EventEmitter<null> = new EventEmitter();
   private productsArray: Product[] = []
 
   httpHeader = {
@@ -16,7 +17,9 @@ export class ProductService {
 
   baseUrl: string
 
-
+  notifyProductChanged(){
+    this.productChangeEvent.emit();
+  }
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000'
     this.productsArray = []
@@ -39,7 +42,10 @@ export class ProductService {
   addProductHttp(id: number, name: string, price: number, supplier_id: number, image_path: string) {
     var newProduct = new Product(id, name, price, supplier_id, image_path)
     console.log(newProduct)
-    return this.httpClient.post<Product>(this.baseUrl + '/products/', newProduct, this.httpHeader).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.post<Product>(this.baseUrl + '/products/', newProduct).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+      this.notifyProductChanged();
+    })
+
   }
 
   updateProduct(oldProduct: Product, id: number, name: string, price: number, supplier_id: number, image_path: string) {
@@ -55,7 +61,10 @@ export class ProductService {
     oldProduct.price = price
     oldProduct.supplier_id = supplier_id
     oldProduct.img_path = image_path
-    return this.httpClient.put<Product>(this.baseUrl + '/products/' + id, oldProduct, this.httpHeader).pipe(retry(1), catchError(this.httpError))
+
+    return this.httpClient.put<Product>(this.baseUrl + '/products/' + id, oldProduct).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+      this.notifyProductChanged();
+    })
   }
 
   deleteProduct(id: number) {
@@ -65,8 +74,11 @@ export class ProductService {
 
   }
 
-  deleteProductHttp(id: number) {
-    return this.httpClient.delete<Product>(this.baseUrl + '/products/' + id).pipe(retry(1), catchError(this.httpError))
+
+  deleteProductHttp(id:number){
+    return this.httpClient.get<Product>(this.baseUrl + '/products/' + id).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+      this.notifyProductChanged();
+    })
   }
 
   getProductById(id: number): Product | undefined {

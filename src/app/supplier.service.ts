@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Supplier } from './models/supplier';
@@ -9,7 +9,9 @@ import { Supplier } from './models/supplier';
 export class SupplierService {
   suppliersList: Supplier[]
   baseUrl: string
-
+  httpHeader = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000'
     this.suppliersList = [
@@ -41,7 +43,7 @@ export class SupplierService {
     var newSupplier = new Supplier(id, location, name, "")
     console.log("Adding")
 
-    return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers/', newSupplier)
+    return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers/', newSupplier,this.httpHeader)
   }
 
 
@@ -54,7 +56,7 @@ export class SupplierService {
   updateSupplierHttp(oldUser: Supplier, id: number, name: string, location: string) {
     oldUser.name = name
     oldUser.location = location
-    return this.httpClient.put<Supplier>(this.baseUrl + '/suppliers/' + id, oldUser).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.put<Supplier>(this.baseUrl + '/suppliers/' + id, oldUser,this.httpHeader).pipe(retry(1), catchError(this.httpError))
   }
   deleteSupplier(id: number) {
     var supplier = this.suppliersList.find(supplier => supplier.id == id)

@@ -55,6 +55,7 @@ export class AddProductComponent implements OnInit {
     }
     else {
 
+
       this.productsService.getProductsHttp().subscribe(products => {
         var maxId = 0
         products.forEach(product => {
@@ -70,6 +71,7 @@ export class AddProductComponent implements OnInit {
         document.getElementById('addProductModalButton')?.click()
 
       })
+
 
     }
   }

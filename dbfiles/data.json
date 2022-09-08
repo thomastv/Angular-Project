@@ -3,7 +3,7 @@
     {
       "id": 101,
       "name": "Laptop",
-      "price": "87000",
+      "price": 85000,
       "supplier_id": 1001,
       "img_path": "assets/images/laptop.jpg"
     },
@@ -19,11 +19,11 @@
       "name": "Dongle",
       "price": "500",
       "supplier_id": 1003,
-      "img_path": "assets/images/mobile.jpg"
+      "img_path": "assets/images/dongle.jpeg"
     },
     {
       "id": 104,
-      "name": "Keyboard",
+      "name": "Lan Cable",
       "price": "1200",
       "supplier_id": 1004,
       "img_path": "assets/images/cable.jpg"
@@ -31,19 +31,20 @@
     {
       "id": 105,
       "name": "Mouse",
-      "price": "720",
+      "price": 1400,
       "supplier_id": 1005,
-      "img_path": "assets/images/usb.jpg"
+      "img_path": "assets/images/mouse.jpg"
     },
     {
-      "name": "EarbudsUpdates",
-      "price": "8999",
+      "name": "Earpods",
+      "price": 9999,
       "supplier_id": 1005,
-      "img_path": "assets/images/laptop.jpg",
+      "img_path": "assets/images/earpods.jpg",
       "id": 107
     },
     {
       "id": 108,
+
       "name": "LaptopNew",
       "price": 5000,
       "supplier_id": 15,
@@ -55,6 +56,7 @@
       "price": 2,
       "supplier_id": 123,
       "img_path": "assets/images/usb.jpg"
+
     }
   ],
   "suppliers": [
@@ -99,42 +101,65 @@
       "location": "MangaloreUpdate",
       "logo_path": "assets/images/girias.png",
       "id": 1007
+
     },
     {
       "id": 123,
       "location": "Hyderabad, Indiaa",
       "name": "Laptop",
       "logo_path": ""
+
     }
   ],
   "users": [
     {
       "id": 1,
       "username": "Admin",
-      "email": "admin@legalcliq.com",
+      "email": "admin@tismo.com",
       "password": "admin123",
       "role": "admin"
     },
     {
       "id": 2,
-      "username": "Neha",
-      "email": "neha@legalcliq.com",
-      "password": "neha123",
-      "role": "admin"
-    },
-    {
-      "id": 3,
       "username": "James",
-      "email": "john@legalcliq.com",
+      "email": "james@gmail.com",
       "password": "john123",
       "role": "user"
     },
     {
-      "id": 4,
+      "id": 3,
       "username": "Jerry",
-      "email": "jerry@legalcliq.com",
+      "email": "jerry@yahoo.com",
       "password": "jerry123",
       "role": "user"
+    },
+    {
+      "id": 4,
+      "username": "Manager",
+      "email": "manager@tismo.com",
+      "password": "manager1234",
+      "role": "admin"
+    },
+    {
+      "id": 5,
+      "username": "Jim",
+      "email": "jim@gmail.com",
+      "password": "jim123",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "username": "Sam",
+      "email": "sam@yahoo.com",
+      "password": "sam123",
+      "role": "user"
+    },
+    {
+      "id": 7,
+      "username": "Jijo",
+      "email": "jijo@tismo.com",
+      "password": "jijo123",
+      "role": "admin"
     }
   ],
   "carts": [
@@ -149,7 +174,9 @@
             "supplier_id": 1001,
             "img_path": "assets/images/laptop.jpg"
           },
+
           "count": 15
+
         },
         {
           "product": {
@@ -209,6 +236,30 @@
     {
       "id": 4,
       "cartItems": []
+    },
+    {
+      "cartItems": [],
+      "id": 8
+    },
+    {
+      "cartItems": [],
+      "id": 9
+    },
+    {
+      "cartItems": [],
+      "id": 10
+    },
+    {
+      "cartItems": [],
+      "id": 11
+    },
+    {
+      "cartItems": [],
+      "id": 12
+    },
+    {
+      "cartItems": [],
+      "id": 13
     }
   ],
   "cartTemps": [

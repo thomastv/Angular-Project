@@ -1,6 +1,7 @@
 import { CartItem } from "./cartItem";
 import { Product } from "./product";
 
+
 export class CartTemp {
     id: number;
     userId: number;
@@ -47,3 +48,16 @@ export class SupplierTemp {
 }
 
 // {id:number,cartItems:[{product:{"id": 101, "name": "Laptop", "price": "87000", "supplier_id": 1001, "img_path": "assets/images/laptop.jpg"},count:1}]}
+
+//import { ProductTemp } from "./productTemp";
+
+//export class CartTemp {
+//    id: number;
+//    products: ProductTemp[] =[]
+//    constructor(id: number) {
+//        this.id = id;
+ //   }
+
+
+//}
+
