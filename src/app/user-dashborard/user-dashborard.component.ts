@@ -11,5 +11,9 @@ export class UserDashborardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  changeDefault(){
+    let para = document.getElementById("defaultAdd");
+    para!.innerText = "T2-1A, Millennium City IT Park Salt Lake, Sector V Kolkata, 700091 India"
+  }
 
 }

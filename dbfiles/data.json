@@ -169,7 +169,7 @@
             "supplier_id": 1004,
             "img_path": "assets/images/cable.jpg"
           },
-          "count": 6
+          "count": 5
         }
       ]
     },
@@ -233,6 +233,12 @@
     {
       "cartItems": [],
       "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
     }
   ],
   "cartTemps": [
