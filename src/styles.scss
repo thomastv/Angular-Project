@@ -20,13 +20,12 @@ $tismo_electronics-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$tismo_electronics-theme: mat.define-light-theme((
-  color: (
-    primary: $tismo_electronics-primary,
-    accent: $tismo_electronics-accent,
-    warn: $tismo_electronics-warn,
-  )
-));
+
+$tismo_electronics-theme: mat.define-light-theme((color: (primary: $tismo_electronics-primary,
+        accent: $tismo_electronics-accent,
+        warn: $tismo_electronics-warn,
+      )));
+
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -87,9 +86,19 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.bordered{
-  border : 1px dashed black;
+.bordered {
+  border: 1px dashed black;
   background-color: #eee;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+

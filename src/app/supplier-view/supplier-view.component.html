@@ -3,12 +3,12 @@
 
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-2"><button type="button" id="addSupplierModalButton" class="btn btn-primary btn-custom ms-3"
+    <div class="col-md-2"><button type="button" id="addSupplierModalButton" class="btn btn-primary btn-custom ms-3 mt-3"
             data-bs-toggle="modal" data-bs-target="#addSupplierModal">
             Add Supplier
         </button></div>
-    <div class="col-md-2"> <button type="button" id="updateSupplierModalButton" class="btn btn-primary btn-custom ms-3"
-            data-bs-toggle="modal" data-bs-target="#updateSupplierModal">
+    <div class="col-md-2"> <button type="button" id="updateSupplierModalButton"
+            class="btn btn-primary btn-custom ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#updateSupplierModal">
             Update Supplier
         </button></div>
     <div class="col-md-4"></div>
@@ -53,7 +53,7 @@
                 <td>{{p.location}}</td>
                 <td><button class="btn btn-outline-success" (click)="viewSupplier(p.id)">View Supplier</button></td>
                 <td><button class="btn btn-outline-danger" (click)="deleteSupplier(p.id)">Delete Supplier</button></td>
-                
+
             </tr>
         </tbody>
     </table>

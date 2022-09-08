@@ -24,24 +24,24 @@
                     <a class="nav-link" [routerLink]="['/contactus']" routerLinkActive="activebutton">Contact Us</a>
                 </li>
                 <li *ngIf="!isLoggedIn" class="nav-item">
-                    <button type="button" id="signUpModalButton" class="btn btn-secondary ml-2 " data-bs-toggle="modal"
-                        data-bs-target="#signUpModal">
+                    <button type="button" id="signUpModalButton" class="btn btn-outline-primary ml-2 mt-1 "
+                        data-bs-toggle="modal" data-bs-target="#signUpModal">
                         Sign Up
                     </button>
                 </li>
                 <li *ngIf="!isLoggedIn" class="nav-item">
-                    <button type="button" id="loginModalButton" class="btn btn-primary btn-custom ms-3"
+                    <button type="button" id="loginModalButton" class="btn btn-primary btn-custom ms-3 mt-1"
                         data-bs-toggle="modal" data-bs-target="#loginModal">
                         Login
                     </button>
                 </li>
                 <li *ngIf="isLoggedIn" class="nav-item">
-                    <button type="button" id="viewCartButton" class="btn btn-primary btn-custom ms-3">
+                    <button type="button" id="viewCartButton" class="btn btn-outline-primary btn-custom ms-3 mt-1">
                         <a class="" [routerLink]="['/myCart']">My Cart</a>
                     </button>
                 </li>
                 <li *ngIf="isLoggedIn" class="nav-item">
-                    <button type="button" id="logOutButton" class="btn btn-primary btn-custom ms-3"
+                    <button type="button" id="logOutButton" class="btn btn-primary btn-custom ms-3 mt-1"
                         (click)="onLogOut()">
                         Logout
                     </button>
