@@ -48,7 +48,7 @@ export class BannerComponent implements OnInit {
     else {
       var randomId = Math.floor(Math.random() * (100000 + 1));
       var role = 'user'
-      this.userService.addUser(randomId, this.signUpForm.value.username, this.signUpForm.value.password, role, this.signUpForm.value.email)
+      this.userService.addUserHttp(randomId, this.signUpForm.value.username, this.signUpForm.value.password, role, this.signUpForm.value.email)
       document.getElementById('signUpModalButton')?.click()
     }
   }

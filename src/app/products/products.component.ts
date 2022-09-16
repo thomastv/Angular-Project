@@ -57,7 +57,9 @@ export class ProductsComponent implements OnInit {
       alert("Please log in to continue")
       return
     }
-    this.cartService.addProductHttp(prod, parseInt(userId!));
+    this.cartService.addProductHttp(prod, parseInt(userId!)).subscribe(data => {
+      console.log(data);
+    });
   }
 
   onSubmit(username: HTMLInputElement, password: HTMLInputElement) {

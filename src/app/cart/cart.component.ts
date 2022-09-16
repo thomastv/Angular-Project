@@ -41,8 +41,11 @@ export class CartComponent implements OnInit {
 
   increaseItem(prod: CartItem) {
     var userId = localStorage.getItem('userId')!
-    var sub = this.cartService.addProductHttp(prod.product, parseInt(userId));
-    sub.add(() => { console.log("FINALIZER INCREASE ITEM") })
+    var sub = this.cartService.addProductHttp(prod.product, parseInt(userId)).subscribe(data =>{
+      console.log(data);
+      location.reload();
+    });
+    //sub.add(() => { console.log("FINALIZER INCREASE ITEM") })
   }
   decreseItem(prod: CartItem) {
     var userId = localStorage.getItem('userId')!

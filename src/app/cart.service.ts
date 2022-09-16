@@ -18,34 +18,24 @@ export class CartService {
   }
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000'
+    this.baseUrl = 'https://localhost:3000/api/Cart/'
     this.myCart = new Cart(1, []);
   }
 
   getCartForUserHttp(id: number): Observable<Cart> {
-    return this.httpClient.get<Cart>(this.baseUrl + '/carts/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<Cart>(this.baseUrl + 'id?id=' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   getCartItems() {
     return this.myCart.cartItems;
   }
 
-  // Generate a cart if there is no existing cart
-  generateCart(userId: number) {
-    return this.getCartForUserHttp(userId).subscribe(data => { }, error => {
-      var newCart = new Cart(userId, [])
-      return this.httpClient.post<Cart>(this.baseUrl + '/carts/', newCart).pipe()
-    })
 
-  }
-
-  createCart(userId: number) {
-    var newCart = new Cart(userId, [])
-    return this.httpClient.post<Cart>(this.baseUrl + '/carts/', JSON.stringify(newCart)).pipe(retry(1), catchError(this.httpError))
-  }
 
   updateCart(userId: number, newCart: Cart) {
-    return this.httpClient.put<Cart>(this.baseUrl + '/carts/' + userId, newCart).pipe(retry(1), catchError(this.httpError))
+    console.log(newCart);
+    
+    return this.httpClient.post<Cart>(this.baseUrl + 'SaveCart', newCart).pipe(retry(1), catchError(this.httpError))
   }
 
 
@@ -66,31 +56,14 @@ export class CartService {
     console.log(this.getCartItems());
   }
 
-
+  removeProductHttp(prod: Product, userId: number){
+    return this.httpClient.put<Cart>(this.baseUrl +'removeFromCart?cartId='+userId+'&productId='+prod.id,prod).pipe(retry(1), catchError(this.httpError))
+  }
 
 
   addProductHttp(prod: Product, userId: number) {
-    return this.getCartForUserHttp(userId).subscribe(cart => {
-      let flag = false;
 
-      cart.cartItems.forEach((element) => {
-        if (element.product.id == prod.id) {
-          element.count++;
-          flag = true;
-        }
-      })
-      if (flag == false) {
-        let newItem = new CartItem(prod);
-        cart.cartItems.push(newItem);
-      }
-
-
-      return this.updateCart(userId, cart).subscribe(data => {
-        console.log("Cart Updated")
-        this.notifyCartChange()
-      })
-
-    })
+    return this.httpClient.put<Cart>(this.baseUrl +'addToCart?cartId='+userId+'&productId='+prod.id,prod).pipe(retry(1), catchError(this.httpError))
   }
 
   decreaseProductCountHttp(prod: Product, userId: number) {
@@ -102,7 +75,10 @@ export class CartService {
         cart.cartItems.splice(index, 1);
       }
       currentItem.count--;
-
+      console.log(currentItem);
+      this.removeProductHttp(prod,userId).subscribe(data =>{
+        console.log(data);
+      })
       this.updateCart(userId, cart).subscribe(data => {
         console.log("Cart Updated")
         this.notifyCartChange()

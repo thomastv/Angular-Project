@@ -13,7 +13,7 @@ export class SupplierService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000'
+    this.baseUrl = 'https://localhost:3000/api'
     this.suppliersList = [
       // new Supplier(1, "Bangalore, India", "Supplier 1"),
       // new Supplier(2, "Hyderabad, India", "Supplier 2"),
@@ -27,11 +27,11 @@ export class SupplierService {
   }
 
   getSuppliersHttp(): Observable<Supplier[]> {
-    return this.httpClient.get<Supplier[]>(this.baseUrl + '/suppliers').pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<Supplier[]>(this.baseUrl + '/Supplier').pipe(retry(1), catchError(this.httpError))
   }
 
   getSupplierByIdHttp(id: number): Observable<Supplier> {
-    return this.httpClient.get<Supplier>(this.baseUrl + '/suppliers/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<Supplier>(this.baseUrl + '/Supplier/id?id=' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   addSupplier(id: number, location: string, name: string) {
@@ -40,10 +40,10 @@ export class SupplierService {
   }
 
   addSupplierHttp(id: number, location: string, name: string) {
-    var newSupplier = new Supplier(id, location, name, "")
+    var newSupplier = new Supplier(0, location, name, "")
     console.log("Adding")
 
-    return this.httpClient.post<Supplier>(this.baseUrl + '/suppliers/', newSupplier,this.httpHeader)
+    return this.httpClient.post<Supplier>(this.baseUrl + '/Supplier/SaveSupplier', newSupplier,this.httpHeader)
   }
 
 
@@ -56,13 +56,14 @@ export class SupplierService {
   updateSupplierHttp(oldUser: Supplier, id: number, name: string, location: string) {
     oldUser.name = name
     oldUser.location = location
-    return this.httpClient.put<Supplier>(this.baseUrl + '/suppliers/' + id, oldUser,this.httpHeader).pipe(retry(1), catchError(this.httpError))
+    console.log(id);
+    return this.httpClient.post<Supplier>(this.baseUrl + '/Supplier/SaveSupplier' , oldUser,this.httpHeader).pipe(retry(1), catchError(this.httpError))
   }
   deleteSupplier(id: number) {
     var supplier = this.suppliersList.find(supplier => supplier.id == id)
     // var index = this.suppliersList.indexOf(supplier!)
     // this.suppliersList.splice(index, 1)
-    return this.httpClient.delete<Supplier>(this.baseUrl + '/suppliers/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.delete<Supplier>(this.baseUrl + '/Supplier/DeleteSupplier/id?id=' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   httpError(error: HttpErrorResponse) {

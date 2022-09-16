@@ -21,7 +21,7 @@ export class ProductService {
     this.productChangeEvent.emit();
   }
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000'
+    this.baseUrl = 'https://localhost:3000'
     this.productsArray = []
   }
 
@@ -30,7 +30,7 @@ export class ProductService {
   }
 
   getProductsHttp(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.baseUrl + '/products').pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<Product[]>(this.baseUrl + '/Products').pipe(retry(1), catchError(this.httpError))
   }
 
   addProduct(id: number, name: string, price: number, supplier_id: number, image_path: string) {
@@ -40,9 +40,9 @@ export class ProductService {
   }
 
   addProductHttp(id: number, name: string, price: number, supplier_id: number, image_path: string) {
-    var newProduct = new Product(id, name, price, supplier_id, image_path)
+    var newProduct = new Product(0, name, price, supplier_id, image_path)
     console.log(newProduct)
-    return this.httpClient.post<Product>(this.baseUrl + '/products/', newProduct).pipe(retry(1), catchError(this.httpError)).subscribe((evt) => {
+    return this.httpClient.post<Product>(this.baseUrl + '/Products/SaveProduct', newProduct).pipe(retry(1), catchError(this.httpError)).subscribe((evt) => {
       this.notifyProductChanged();
     })
 
@@ -62,7 +62,7 @@ export class ProductService {
     oldProduct.supplier_id = supplier_id
     oldProduct.img_path = image_path
 
-    return this.httpClient.put<Product>(this.baseUrl + '/products/' + id, oldProduct).pipe(retry(1), catchError(this.httpError)).subscribe((evt) => {
+    return this.httpClient.post<Product>(this.baseUrl + '/Products/SaveProduct', oldProduct).pipe(retry(1), catchError(this.httpError)).subscribe((evt) => {
       this.notifyProductChanged();
     })
   }
@@ -76,7 +76,7 @@ export class ProductService {
 
 
   deleteProductHttp(id: number) {
-    return this.httpClient.delete<Product>(this.baseUrl + '/products/' + id).pipe(retry(1), catchError(this.httpError)).subscribe((evt) => {
+    return this.httpClient.delete<Product>(this.baseUrl + '/Products/DeleteProduct/id?id=' + id).pipe(retry(1), catchError(this.httpError)).subscribe((evt) => {
       this.notifyProductChanged();
     })
   }
@@ -86,7 +86,7 @@ export class ProductService {
   }
 
   getProductByIdHttp(id: number): Observable<Product> {
-    return this.httpClient.get<Product>(this.baseUrl + '/products/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<Product>(this.baseUrl + '/Products/id?id=' + id).pipe(retry(1), catchError(this.httpError))
   }
 
 

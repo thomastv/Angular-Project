@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { catchError, lastValueFrom, Observable, retry, throwError } from 'rxjs';
 import { CartService } from './cart.service';
+import { Cart } from './models/cart';
 import { User } from './models/user';
 
 @Injectable({
@@ -20,12 +21,12 @@ export class UserService {
     this.userChangeEvent.emit();
   }
   constructor(private httpClient: HttpClient, private cartService: CartService) {
-    this.baseUrl = 'http://localhost:3000'
+    this.baseUrl = 'https://localhost:3000/api/User'
     this.usersList = [
-      new User(1, "mushthaq", "Qwerty123", "admin", "test@123.com"),
-      new User(2, "testuser", "Qwerty123", "user", "test4@123.com"),
-      new User(4, "pcmushthaq", "Qwerty123", "user", "test2@123.com"),
-      new User(5, "mohammed", "Qwerty123", "user", "test3@123.com"),
+      // new User(1, "mushthaq", "Qwerty123", "admin", "test@123.com"),
+      // new User(2, "testuser", "Qwerty123", "user", "test4@123.com"),
+      // new User(4, "pcmushthaq", "Qwerty123", "user", "test2@123.com"),
+      // new User(5, "mohammed", "Qwerty123", "user", "test3@123.com"),
     ]
     this.checkLoginStatus()
   }
@@ -45,24 +46,27 @@ export class UserService {
   }
 
   getUsersHttp(): Observable<User[]> {
-    var observable = this.httpClient.get<User[]>(this.baseUrl + '/users').pipe(retry(1), catchError(this.httpError))
+    var observable = this.httpClient.get<User[]>(this.baseUrl).pipe(retry(1), catchError(this.httpError))
     return observable
   }
   
   getUserByIdHttp(id:number): Observable<User> {
-    return this.httpClient.get<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<User>(this.baseUrl + '/id?id=' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   addUser(id: number, username: string, password: string, role: string, email: string) {
-    var newUser = new User(id, username, password, role, email)
+    let cart = new Cart(0,[]);
+    var newUser = new User(id, username, password, role, email,cart)
     this.usersList.push(newUser)
     this.notifyUserChange();
   }
 
   addUserHttp(id: number, username: string, password: string, role: string, email: string){
-    var newUser = new User(id, username, password, role, email);
+    let cart = new Cart(0,[]);
+    var newUser = new User(0, username, password, role, email,cart);
     this.notifyUserChange();
-    return this.httpClient.post<User>(this.baseUrl + '/users/', newUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+    console.log("User addrr")
+    return this.httpClient.post<User>(this.baseUrl + '/SaveUser', newUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
       this.notifyUserChange();
     })
   }
@@ -85,16 +89,19 @@ export class UserService {
     oldUser.email = email
     oldUser.password = password
     oldUser.role = role
-    return this.httpClient.put<User>(this.baseUrl + '/users/' + oldUser.id, oldUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+    console.log(oldUser.cart)
+    if(oldUser.cart == null)
+      oldUser.cart = new Cart(0,[]);
+    return this.httpClient.post<User>(this.baseUrl + '/SaveUser', oldUser).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
       this.notifyUserChange();
     })
   }
   getUserByMailAndPassword(mail: string, password: string) {
-    return this.httpClient.get<User[]>(this.baseUrl + '/users' + '?email=' + mail + '&password=' + password).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<User[]>(this.baseUrl + '/email?email='+mail).pipe(retry(1), catchError(this.httpError))
   }
 
   getUserById(id: number) {
-    return this.httpClient.get<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError))
+    return this.httpClient.get<User>(this.baseUrl + '/id?id=' + id).pipe(retry(1), catchError(this.httpError))
   }
 
   loginUser(user: User): User | undefined {
@@ -105,7 +112,7 @@ export class UserService {
       localStorage.setItem("role", user.role)
       localStorage.setItem("isLoggedIn", 'true')
       localStorage.setItem("userId", user.id.toString())
-      this.cartService.generateCart(user.id)
+      //this.cartService.generateCart(user.id)
     }
     return user
   }
@@ -126,7 +133,7 @@ export class UserService {
   }
 
   deleteUserHttp(id:number){
-    return this.httpClient.delete<User>(this.baseUrl + '/users/' + id).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
+    return this.httpClient.delete<User>(this.baseUrl + '/DeleteUser/id?id='+ id).pipe(retry(1), catchError(this.httpError)).subscribe((evt)=>{
       this.notifyUserChange();
     })
   }

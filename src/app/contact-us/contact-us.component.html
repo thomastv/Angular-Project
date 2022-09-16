@@ -1,5 +1,5 @@
 <div>
-    <div id="contactus">
+    <div id="title">
         <br>
         <br>
         <span>Where we are</span>
@@ -7,22 +7,28 @@
         <img src="assets/images/Map-1920x983-removebg-preview.png" width="50%" class="mx-auto d-block" alt="">
     </div>
     <br>
-    <div id="stats">
-        <div class="row align-items-center">
+    <div id="stats" style="padding: 5%;">
+        <div class="row align-items-center container-fluid">
             <div class="col-md-4 text-center">
-                <div id="statTitle">PROJECTS</div>
+                <div id="statTitle">
+                    <h3 style="font-size: 100%;">PROJECTS</h3>
+                </div>
                 <br>
-                <div id="statCounter">380 </div>
+                <div id="statCounter">380</div>
             </div>
             <div class="col-md-4 text-center">
-                <div id="statTitle">CLIENTS</div>
+                <div id="statTitle">
+                    <h3 style="font-size: auto;">CLIENTS</h3>
+                </div>
                 <br>
                 <div id="statCounter">151 </div>
             </div>
             <div class="col-md-4 text-center">
-                <div id="statTitle">COUNTRIES</div>
+                <div id="statTitle">
+                    <h3 style="font-size: auto;">COUNTRIES</h3>
+                </div>
                 <br>
-                <div id="statCounter">15 </div>
+                <div id="statCounter">15</div>
             </div>
         </div>
 
@@ -33,27 +39,54 @@
 
 
         <div id="contactform">
-            <form #myForm="ngForm" class="ui form">
+            <form [formGroup]="myForm" class="ui form">
                 <div class="mb-3">
                     <label for="name" class="form-label text-light">Name</label>
-                    <input type="name" class="form-control" id="name" name="name" [(ngModel)]="name">
+                    <input type="text" class="form-control" id="name" name="name" formControlName="name">
+                    <div *ngIf="submitted && f['name'].errors" class="text-danger">
+                        <div *ngIf="f['name'].errors['required']"> Name is Required</div>
+                    </div>
 
                 </div>
                 <div class="mb-3">
-                    <label for="phone" class="form-label text-light">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" name="phoneNumber" [(ngModel)]="phoneNumber">
+                    <label for="phoneNumber" class="form-label text-light">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                        formControlName="phoneNumber" required>
+                    <div *ngIf="submitted && f['phoneNumber'].errors" class="text-danger">
+                        <div *ngIf="f['phoneNumber'].errors['required']"> {{error}}</div>
+                        <div *ngIf="!f['phoneNumber'].errors['required']">
+                            <div *ngIf="f['phoneNumber'].errors['invalidPhone']">Phone Number must have 10 digits</div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label text-light">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        name="emailAddress" [(ngModel)]="emailAddress">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <label for="emailAddress" class="form-label text-light">Email address</label>
+                    <input type="text" class="form-control" id="emailAddress" name="emailAddress"
+                        formControlName="emailAddress">
+                    <div *ngIf="submitted && f['emailAddress'].errors" class="text-danger">
+                        <div *ngIf="f['emailAddress'].errors['required']"> Email ID is Required</div>
+                        <div *ngIf="f['emailAddress'].errors['pattern']"> Email ID is not in required format</div>
+                    </div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="feedback" class="form-label text-light">Feedback</label>
+                    <!-- <input type="text" class="form-control" id="feedback" name="feedback"
+                        aria-describedby="feedbackHelp" formControlName="feedback"> -->
+                    <textarea name="feedback" id="feedbackText" cols="25" rows="5"
+                        formControlName="feedback"></textarea>
+                    <div *ngIf="submitted && f['feedback'].errors" class="text-danger">
+                        <div *ngIf="f['feedback'].errors['required']"> Please provide a feedback</div>
+                    </div>
+                    <div id="feedbackHelp" class="form-text">We'll get back to you within 2 business days</div>
                 </div>
 
 
-                <button type="submit" class="btn btn-primary" (click)="PrintDetails()">Submit</button>
+                <button type="submit" class="btn btn-primary" id="contactButton"
+                    (click)="OnSubmit(myForm.value)">Submit</button>
             </form>
+            <br><br>
 
             <!-- <div>
                 You Enquired For {{name}} {{phoneNumber}} {{emailAddress}}
